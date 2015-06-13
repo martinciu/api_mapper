@@ -1,6 +1,6 @@
 # ApiMapper
 
-api_mapper converts API resources in to ruby objects
+api_mapper converts API resources into ruby objects
 
 ## Installation
 
@@ -21,6 +21,16 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+
+module Moves
+  class Profile
+    include Virtus.model
+
+    attribute :id, String
+    attribute :platform, String
+  end
+end
+
 object_manager = ApiMapper::ObjectManager.new('https://api.moves-app.com/api/1.1/')
 object_managet.authorize_with_bearer(ACCESS_TOKEN)
 
