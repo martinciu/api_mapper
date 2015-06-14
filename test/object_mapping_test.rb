@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApiMappingTest < Minitest::Test
+class ApiObjectMappingTest < Minitest::Test
 
   class Address
     include Lift
