@@ -23,6 +23,6 @@ class ApiAttributeMappingTest < Minitest::Test
   def test_nested_extract_nil
     mapping = ApiMapper::AttributeMapping.new("user.age", "age")
 
-    assert_nil mapping.extract("user", { "name" => "john" })
+    assert_raises(ApiMapper::AttributeMapping::Error) { mapping.extract("user", { "name" => "john" }) }
   end
 end

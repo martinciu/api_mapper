@@ -1,5 +1,7 @@
 module ApiMapper
   class AttributeMapping
+    Error = Class.new(StandardError)
+
     attr_reader :from, :to
 
     def initialize(from, to = nil)
@@ -21,8 +23,9 @@ module ApiMapper
 
       keys = from.to_s.split('.')
       keys.shift
-      ret_val = keys.inject(value) { |val, msg| val.is_a?(Hash) ? val.fetch(msg, {}) : val } if match?(key)
-      ret_val unless ret_val == {}
+      keys.inject(value) { |val, msg| val.fetch(msg) } if match?(key)
+    rescue KeyError => exception
+      raise Error.new(exception.message)
     end
 
   end

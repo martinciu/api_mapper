@@ -22,8 +22,8 @@ class ApiMappingTest < Minitest::Test
   def test_path
     mapping = ApiMapper::ObjectMapping.new Address
     mapping.add_mapping(ApiMapper::AttributeMapping.new("id"))
-    mapping.add_mapping(ApiMapper::AttributeMapping.new("myAddress.street"))
-    mapping.add_mapping(ApiMapper::AttributeMapping.new("myAddress.city", "town"))
+    mapping.add_mapping(ApiMapper::AttributeMapping.new("myAddress.home.street"))
+    mapping.add_mapping(ApiMapper::AttributeMapping.new("myAddress.home.city", "town"))
 
     assert_equal({ "id" => 123, "town" => "Barcelona", "street" => "Gran Via" }, mapping.extract(original))
   end
@@ -35,7 +35,7 @@ class ApiMappingTest < Minitest::Test
 
     mapping = ApiMapper::ObjectMapping.new Address
     mapping.add_mapping(ApiMapper::AttributeMapping.new("id"))
-    mapping.add_mapping(ApiMapper::RelationshipMapping.new("myAddress", "address", address_mapping))
+    mapping.add_mapping(ApiMapper::RelationshipMapping.new("myAddress.home", "address", address_mapping))
 
     assert_equal({ "id" => 123, "address" => Address.new(street: "Gran Via", city: "Barcelona")}, mapping.extract(original))
   end
@@ -47,11 +47,10 @@ class ApiMappingTest < Minitest::Test
 
     mapping = ApiMapper::ObjectMapping.new Address
     mapping.add_mapping(ApiMapper::AttributeMapping.new("id"))
-    mapping.add_mapping(ApiMapper::RelationshipMapping.new("address", "address", address_mapping))
+    mapping.add_mapping(ApiMapper::RelationshipMapping.new("address.home", "address", address_mapping))
 
     assert_equal({ "id" => 123 }, mapping.extract(original))
   end
-
 
   private
 
@@ -61,8 +60,10 @@ class ApiMappingTest < Minitest::Test
       "email" => "john@example.com",
       "firstName" => "John",
       "myAddress" => {
-        "street" => "Gran Via",
-        "city" => "Barcelona"
+        "home" => {
+          "street" => "Gran Via",
+          "city" => "Barcelona"
+        }
       }
     }
   end
