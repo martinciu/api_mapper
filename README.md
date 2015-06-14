@@ -1,6 +1,9 @@
 # ApiMapper
 
-api_mapper converts API resources into ruby objects
+[![Build Status](https://travis-ci.org/martinciu/api_mapper.svg?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/martinciu/api_mapper/badges/gpa.svg)](https://codeclimate.com/github/martinciu/api_mapper)
+
+ApiMapper converts API resources into ruby objects
 
 ## Installation
 
