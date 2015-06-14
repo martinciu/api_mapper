@@ -9,6 +9,8 @@ ApiMapper converts API resources into ruby objects
 
 ## Installation
 
+**Warning: This is work in progress. Public API will probably change** 
+
 Add this line to your application's Gemfile:
 
 ```ruby
