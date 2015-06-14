@@ -55,7 +55,7 @@ object_manager.add_response_descriptor(response_descriptor)
 
 object_manager.get('user/profile').first
 
-# #<Moves::Profile:0x007f92f2bfce80 @id="19893780817643993", @platform="ios">
+#<Moves::Profile:0x007f92f2bfce80 @id="19893780817643993", @platform="ios">
 
 ```
 
