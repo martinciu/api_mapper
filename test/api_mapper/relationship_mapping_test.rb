@@ -22,6 +22,12 @@ module ApiMapper
       assert_equal nil, mapping.extract("address", original)
     end
 
+    def test_relationship_key_not_found
+      mapping = ApiMapper::RelationshipMapping.new("myAddress.home", "address", address_mapping)
+
+      assert_raises(ApiMapper::RelationshipMapping::Error) { mapping.extract("myAddress", original) }
+    end
+
     private
 
     def address_mapping
