@@ -11,26 +11,25 @@ module ApiMapper
     end
 
     def test_relationship
-      address_mapping = ApiMapper::ObjectMapping.new Address
-      address_mapping.add_mapping(ApiMapper::AttributeMapping.new("street"))
-      address_mapping.add_mapping(ApiMapper::AttributeMapping.new("town", "city"))
-
       mapping = ApiMapper::RelationshipMapping.new("myAddress", "address", address_mapping)
 
       assert_equal Address.new(street: "Gran Via", city: "Barcelona"), mapping.extract("myAddress", original)
     end
 
     def test_relationship_not_found
-      address_mapping = ApiMapper::ObjectMapping.new Address
-      address_mapping.add_mapping(ApiMapper::AttributeMapping.new("street"))
-      address_mapping.add_mapping(ApiMapper::AttributeMapping.new("town", "city"))
-
       mapping = ApiMapper::RelationshipMapping.new("myAddress", "address", address_mapping)
 
       assert_equal nil, mapping.extract("address", original)
     end
 
     private
+
+    def address_mapping
+      address_mapping = ApiMapper::ObjectMapping.new Address
+      address_mapping.add_mapping(ApiMapper::AttributeMapping.new("street"))
+      address_mapping.add_mapping(ApiMapper::AttributeMapping.new("town", "city"))
+      address_mapping
+    end
 
     def original
       { "street" => "Gran Via", "town" => "Barcelona" }
