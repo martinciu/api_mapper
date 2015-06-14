@@ -43,15 +43,19 @@ object_managet.authorize_with_bearer(ACCESS_TOKEN)
 
 profile_mapping = ApiMapper::ObjectMapping.new(Moves::Profile)
 profile_mapping.add_mapping(ApiMapper::AttributeMapping.new("userId", "id"))
-profile_mapping.add_mapping(ApiMapper::AttributeMapping.new("profile.platform", "platform"))
+profile_mapping.add_mapping(ApiMapper::AttributeMapping.new("profile.platform", 
+                                                            "platform"))
 
-response_descriptor = ApiMapper::ResponseDescriptor.new("user/profile", :get, profile_mapping, [200])
+response_descriptor = ApiMapper::ResponseDescriptor.new("user/profile", 
+                                                        :get, 
+                                                        profile_mapping, 
+                                                        [200])
 
-object_manager.add_response_descriptor response_descriptor
+object_manager.add_response_descriptor(response_descriptor)
 
-object_manager.get('user/profile')
+object_manager.get('user/profile').first
 
-# #<ApiMapper::Collection:0x007f92f2bff1d0 @collection=[#<Moves::Profile:0x007f92f2bfce80 @id="19893780817643993", @platform="ios">]>
+# #<Moves::Profile:0x007f92f2bfce80 @id="19893780817643993", @platform="ios">
 
 ```
 
@@ -63,7 +67,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/api_mapper. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/martinciu]/api_mapper. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
