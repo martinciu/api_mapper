@@ -8,3 +8,5 @@ rvm:
   - rbx
   - ruby-head
 before_install: gem install bundler -v 1.10.2
+env:
+  - CODECLIMATE_REPO_TOKEN=9be4b54e9c656f7ddf1e62e80ca02263014d439df7ccceef480369d133f05ffb
