@@ -19,6 +19,16 @@ class ApiRelationshipMappingTest < Minitest::Test
     assert_equal Address.new(street: "Gran Via", city: "Barcelona"), mapping.extract("myAddress", original)
   end
 
+  def test_relationship_not_found
+    address_mapping = ApiMapper::ObjectMapping.new Address
+    address_mapping.add_mapping(ApiMapper::AttributeMapping.new("street"))
+    address_mapping.add_mapping(ApiMapper::AttributeMapping.new("town", "city"))
+
+    mapping = ApiMapper::RelationshipMapping.new("myAddress", "address", address_mapping)
+
+    assert_equal nil, mapping.extract("address", original)
+  end
+
   private
 
   def original
