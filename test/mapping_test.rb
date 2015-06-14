@@ -40,6 +40,19 @@ class ApiMappingTest < Minitest::Test
     assert_equal({ "id" => 123, "address" => Address.new(street: "Gran Via", city: "Barcelona")}, mapping.extract(original))
   end
 
+  def test_relation_not_found
+    address_mapping = ApiMapper::ObjectMapping.new Address
+    address_mapping.add_mapping(ApiMapper::AttributeMapping.new("street"))
+    address_mapping.add_mapping(ApiMapper::AttributeMapping.new("city"))
+
+    mapping = ApiMapper::ObjectMapping.new Address
+    mapping.add_mapping(ApiMapper::AttributeMapping.new("id"))
+    mapping.add_mapping(ApiMapper::RelationshipMapping.new("address", "address", address_mapping))
+
+    assert_equal({ "id" => 123 }, mapping.extract(original))
+  end
+
+
   private
 
   def original
