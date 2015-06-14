@@ -14,7 +14,7 @@ module ApiMapper
       key = args[0]
       value = args[1]
       value if match?(key)
-      @mapping.extract(value) if match?(key)
+      @mapping.map(value) if match?(key)
     end
   end
 end
