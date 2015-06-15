@@ -18,14 +18,17 @@ module ApiMapper
     end
 
     def extract(*args)
-      key = args[0]
-      value = args[1]
+      origin = MappingOrigin.new(*args)
 
-      keys = from.to_s.split('.')
-      keys.shift
-      keys.inject(value) { |val, msg| val.fetch(msg) } if match?(key)
+      keys.inject(origin.value) { |val, msg| val.fetch(msg) } if match?(origin.key)
     rescue KeyError => exception
       raise Error.new(exception.message)
+    end
+
+    def keys
+      keys = from.to_s.split('.')
+      keys.shift
+      keys
     end
 
   end
