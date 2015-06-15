@@ -26,5 +26,23 @@ module ApiMapper
 
       assert_raises(ApiMapper::AttributeMapping::Error) { mapping.extract("user", { "name" => "john" }) }
     end
+
+    def test_attribute_matching
+      mapping = ApiMapper::AttributeMapping.new("user",)
+
+      assert mapping.match?("user")
+    end
+
+    def test_path_matching
+      mapping = ApiMapper::AttributeMapping.new("user.id.firstName", "name")
+
+      assert mapping.match?("user")
+    end
+
+    def test_no_mathcing
+      mapping = ApiMapper::AttributeMapping.new("user.id.firstName", "name")
+
+      refute mapping.match?("firstName")
+    end
   end
 end
