@@ -2,13 +2,14 @@ module ApiMapper
   class ResponseDescriptor
     attr_reader :mapping
 
-    attr_accessor :base_path
+    attr_accessor :base_url
 
     def initialize(path, method, mapping, status_codes)
       @path = Addressable::Template.new(path)
       @method = method
       @mapping = mapping
       @status_codes = status_codes
+      @base_url = URI("")
     end
 
     def match?(response)
@@ -34,7 +35,7 @@ module ApiMapper
     end
 
     def request_path_normalized(response)
-      request_path(response).gsub(/#{base_path}/, "")
+      request_path(response).gsub(/#{base_url.path}/, "")
     end
 
   end
