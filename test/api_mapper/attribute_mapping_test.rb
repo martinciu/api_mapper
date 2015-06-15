@@ -24,7 +24,7 @@ module ApiMapper
     def test_nested_extract_nil
       mapping = ApiMapper::AttributeMapping.new("user.age", "age")
 
-      assert_raises(ApiMapper::AttributeMapping::Error) { mapping.extract(SourceElement.new("user", { "name" => "john" })) }
+      assert_raises(ApiMapper::Extractor::Error) { mapping.extract(SourceElement.new("user", { "name" => "john" })) }
     end
 
     def test_attribute_matching

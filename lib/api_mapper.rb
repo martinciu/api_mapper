@@ -16,6 +16,7 @@ require "api_mapper/response_descriptor"
 require "api_mapper/object_manager"
 require "api_mapper/object_mapping"
 require "api_mapper/source_element"
+require "api_mapper/extractor"
 
 module ApiMapper
   # Your code goes here...
