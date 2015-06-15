@@ -7,7 +7,13 @@ module ApiMapper
     end
 
     def element_at(index_path)
-      index_path.traverse(@value) { |value, path_element| value.fetch(path_element) }
+      index_path.inject(pair) { |value, path_element| value.fetch(path_element) }
+    end
+
+    private
+
+    def pair
+      { @key => @value }
     end
   end
 end
