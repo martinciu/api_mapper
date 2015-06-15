@@ -1,5 +1,5 @@
 module ApiMapper
-  class MappingOrigin
+  class SourceElement
     attr_reader :key, :value
 
     def initialize(*args)
