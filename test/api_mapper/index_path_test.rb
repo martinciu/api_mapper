@@ -16,19 +16,4 @@ class ApiMapper::IndexPathTest < Minitest::Test
     @index_path = ApiMapper::IndexPath.new "foo.bar.baz"
   end
 
-  def hash
-    {
-      foo: {
-        bar: {
-          baz: :qux
-        },
-        ble: {
-          bla: :bla
-        }
-      },
-      nofoo: {
-        bar: :baz
-      }
-    }
-  end
 end
