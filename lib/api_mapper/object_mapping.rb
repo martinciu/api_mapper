@@ -15,7 +15,7 @@ module ApiMapper
     def extract(origin)
       origin.inject({}) do |mapped, (origin_key, origin_value)|
         mappings.match(origin_key).each do |mapping|
-          value = mapping.extract(origin_key, origin_value)
+          value = mapping.extract(MappingOrigin.new(origin_key, origin_value))
           mapped[mapping.to] = value if value
         end
         mapped

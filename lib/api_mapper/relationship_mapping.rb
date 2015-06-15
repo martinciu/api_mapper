@@ -6,9 +6,8 @@ module ApiMapper
       @mapping = mapping
     end
 
-    def extract_mapped(*args)
-      origin = MappingOrigin.new(*args)
-      @mapping.map(extract_hash(*args)) if match?(origin.key)
+    def extract_mapped(origin)
+      @mapping.map(extract_hash(origin)) if match?(origin.key)
     end
 
     alias_method :extract_hash, :extract

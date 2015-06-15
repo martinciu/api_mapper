@@ -13,19 +13,19 @@ module ApiMapper
     def test_relationship
       mapping = ApiMapper::RelationshipMapping.new("myAddress", "address", address_mapping)
 
-      assert_equal Address.new(street: "Gran Via", city: "Barcelona"), mapping.extract("myAddress", original)
+      assert_equal Address.new(street: "Gran Via", city: "Barcelona"), mapping.extract(MappingOrigin.new("myAddress", original))
     end
 
     def test_relationship_not_found
       mapping = ApiMapper::RelationshipMapping.new("myAddress", "address", address_mapping)
 
-      assert_equal nil, mapping.extract("address", original)
+      assert_equal nil, mapping.extract(MappingOrigin.new("address", original))
     end
 
     def test_relationship_key_not_found
       mapping = ApiMapper::RelationshipMapping.new("myAddress.home", "address", address_mapping)
 
-      assert_raises(ApiMapper::AttributeMapping::Error) { mapping.extract("myAddress", original) }
+      assert_raises(ApiMapper::AttributeMapping::Error) { mapping.extract(MappingOrigin.new("myAddress", original)) }
     end
 
     private

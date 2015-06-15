@@ -17,9 +17,7 @@ module ApiMapper
       from.to_s.split('.').first
     end
 
-    def extract(*args)
-      origin = MappingOrigin.new(*args)
-
+    def extract(origin)
       keys.inject(origin.value) { |val, msg| val.fetch(msg) } if match?(origin.key)
     rescue KeyError => exception
       raise Error.new(exception.message)
