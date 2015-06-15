@@ -6,6 +6,7 @@ require 'json'
 require 'addressable/template'
 
 require "api_mapper/collection"
+require "api_mapper/error"
 
 require "api_mapper/version"
 require "api_mapper/attribute_mapping"

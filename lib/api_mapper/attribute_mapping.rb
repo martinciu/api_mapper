@@ -1,6 +1,6 @@
 module ApiMapper
   class AttributeMapping
-    Error = Class.new(StandardError)
+    Error = Class.new(ApiMapper::Error)
 
     attr_reader :from, :to
 

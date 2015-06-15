@@ -1,6 +1,5 @@
 module ApiMapper
   class RelationshipMapping < AttributeMapping
-    Error = Class.new(StandardError)
 
     def initialize(from, to, mapping)
       super(from, to)
