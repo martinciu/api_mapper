@@ -25,7 +25,7 @@ module ApiMapper
     def test_relationship_key_not_found
       mapping = ApiMapper::RelationshipMapping.new("myAddress.home", "address", address_mapping)
 
-      assert_raises(ApiMapper::Extractor::Error) { mapping.extract(SourceElement.new("myAddress", original)) }
+      assert_raises(ApiMapper::AttributeMapping::Error) { mapping.extract(SourceElement.new("myAddress", original)) }
     end
 
     private
