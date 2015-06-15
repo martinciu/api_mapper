@@ -1,7 +1,7 @@
 module ApiMapper
   class ObjectManager
     def initialize(base_url)
-      @base_url = base_url
+      @base_url = URI(base_url)
       @response_descriptors = Collection.new
     end
 
@@ -12,7 +12,12 @@ module ApiMapper
       end
     end
 
+    def base_path
+      @base_url.path
+    end
+
     def add_response_descriptor(response_descriptor)
+      response_descriptor.base_path = base_path
       @response_descriptors.add(response_descriptor)
     end
 

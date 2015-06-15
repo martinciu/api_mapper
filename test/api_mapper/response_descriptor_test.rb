@@ -7,6 +7,13 @@ module ApiMapper
       assert response_descriptor.match?(response)
     end
 
+    def test_matching_response_with_base_path
+      response = fake_response.new(200, URI('http://api.example.com/v1/user/123'), :get)
+
+      response_descriptor.base_path = "v1/"
+      assert response_descriptor.match?(response)
+    end
+
     def test_bad_url
       response = fake_response.new(200, URI('http://api.example.com/profile/123'), :get)
       refute response_descriptor.match?(response)
