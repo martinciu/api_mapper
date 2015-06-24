@@ -18,6 +18,7 @@ require "api_mapper/relationship_mapping"
 require "api_mapper/object_manager"
 require "api_mapper/object_mapping"
 require "api_mapper/response_descriptor"
+require "api_mapper/response_matcher"
 
 require "api_mapper/response"
 

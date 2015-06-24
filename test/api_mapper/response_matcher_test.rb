@@ -1,32 +1,32 @@
 require 'test_helper'
 
 module ApiMapper
-  class ResponseDescriptorTest < Minitest::Test
+  class ResponseMatcherTest < Minitest::Test
     def test_matching_response
       response = fake_response.new(200, URI('http://api.example.com/user/123'), :get)
-      assert response_descriptor.match?(response)
+      assert ApiMapper::ResponseMatcher.new(response, response_descriptor).call
     end
 
     def test_matching_response_with_base_path
       response = fake_response.new(200, URI('http://api.example.com/v1/user/123'), :get)
       response_descriptor.base_url = URI('http://api.example.com/v1')
 
-      assert response_descriptor.match?(response)
+      assert ApiMapper::ResponseMatcher.new(response, response_descriptor).call
     end
 
     def test_bad_url
       response = fake_response.new(200, URI('http://api.example.com/profile/123'), :get)
-      refute response_descriptor.match?(response)
+      refute ApiMapper::ResponseMatcher.new(response, response_descriptor).call
     end
 
     def test_bad_status
       response = fake_response.new(404, URI('http://api.example.com/user/123'), :get)
-      refute response_descriptor.match?(response)
+      refute ApiMapper::ResponseMatcher.new(response, response_descriptor).call
     end
 
     def test_bad_method
       response = fake_response.new(200, URI('http://api.example.com/user/123'), :head)
-      refute response_descriptor.match?(response)
+      refute ApiMapper::ResponseMatcher.new(response, response_descriptor).call
     end
 
     private
