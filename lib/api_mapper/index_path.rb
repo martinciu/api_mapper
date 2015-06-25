@@ -11,7 +11,7 @@ module ApiMapper
     private
 
     def parsed
-      @parsed ||= @raw.split('.')
+      @parsed ||= @raw.to_s.split('.')
     end
   end
 end

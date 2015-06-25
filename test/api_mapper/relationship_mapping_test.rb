@@ -16,6 +16,12 @@ module ApiMapper
       assert_equal Address.new(street: "Gran Via", city: "Barcelona"), mapping.extract(SourceElement.new("myAddress", original))
     end
 
+    def test_relationship_symbols
+      mapping = ApiMapper::RelationshipMapping.new(:myAddress, :address, address_mapping)
+
+      assert_equal Address.new(street: "Gran Via", city: "Barcelona"), mapping.extract(SourceElement.new("myAddress", original))
+    end
+
     def test_relationship_not_found
       mapping = ApiMapper::RelationshipMapping.new("myAddress", "address", address_mapping)
 

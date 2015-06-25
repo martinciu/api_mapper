@@ -7,6 +7,7 @@ module ApiMapper
     def initialize(from, to = nil)
       @from, @to = ApiMapper::IndexPath.new(from), to
       @to ||= @from.last
+      @to = @to.to_s
     end
 
     def match?(key)
