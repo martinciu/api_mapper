@@ -1,7 +1,7 @@
 module ApiMapper
   class ObjectManager
-    def initialize(base_url)
-      @base_url = URI(base_url)
+    def initialize(url)
+      @url = URI(url)
       @response_descriptors = Collection.new
     end
 
@@ -13,11 +13,11 @@ module ApiMapper
     end
 
     def base_path
-      @base_url.path
+      @url.path
     end
 
     def add_response_descriptor(response_descriptor)
-      response_descriptor.base_path = base_path
+      response_descriptor.base_url = @url
       @response_descriptors.add(response_descriptor)
     end
 
@@ -28,7 +28,7 @@ module ApiMapper
     private
 
     def api
-      @api = Faraday.new(@base_url).tap do |connection|
+      @api = Faraday.new(@url).tap do |connection|
         connection.authorization "Bearer", @token if @token
       end
     end
