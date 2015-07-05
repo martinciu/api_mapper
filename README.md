@@ -39,7 +39,7 @@ module Moves
 end
 
 object_manager = ApiMapper::ObjectManager.new('https://api.moves-app.com/api/1.1/')
-object_managet.authorize_with_bearer(ACCESS_TOKEN)
+object_manager.authorize_with_bearer(ACCESS_TOKEN)
 
 profile_mapping = ApiMapper::ObjectMapping.new(Moves::Profile)
 profile_mapping.add_mapping(ApiMapper::AttributeMapping.new("userId", "id"))
