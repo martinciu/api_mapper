@@ -28,35 +28,62 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-
-module Moves
-  class Profile
-    include Virtus.model
-
-    attribute :id, String
-    attribute :platform, String
-  end
+class User
+  include Virtus.model
+  attribute :id, Integer
+  attribute :login
+  attribute :hireable, Boolean
 end
 
-object_manager = ApiMapper::ObjectManager.new('https://api.moves-app.com/api/1.1/')
-object_manager.authorize_with_bearer(ACCESS_TOKEN)
+class Repository
+  include Virtus.model
+  attribute :id, Integer
+  attribute :name
+  attribute :full_name
+  attribute :owner, User
+end
 
-profile_mapping = ApiMapper::ObjectMapping.new(Moves::Profile)
-profile_mapping.add_mapping(ApiMapper::AttributeMapping.new("userId", "id"))
-profile_mapping.add_mapping(ApiMapper::AttributeMapping.new("profile.platform", 
-                                                            "platform"))
+class UserMapper < ApiMapper::Mapper
+  attributes :id, :login, :hireable
+  entity User
+end
 
-response_descriptor = ApiMapper::ResponseDescriptor.new("user/profile", 
-                                                        :get, 
-                                                        profile_mapping, 
-                                                        [200])
+class RepositoriesMapper < ApiMapper::ArrayMapper
+  attributes :id, :name, :full_name
+  relationship :owner, UserMapper
+  entity Repository
+end
 
-object_manager.add_response_descriptor(response_descriptor)
+class Router < ApiMapper::Router
+  get "user", UserMapper
+  patch "user", UserMapper
+  get "repositories", RepositoriesMapper
+end
 
-object_manager.get('user/profile').first
+# client setup
+client = ApiMapper::Client.new('https://api.github.com')
+client.router = Router.new
+client.authorization("token secret_token")
 
-#<Moves::Profile:0x007f92f2bfce80 @id="19893780817643993", @platform="ios">
+# get profile
+profile = client.get('user')
+profile.login                 # martinciu
+profile.hireable              # false
 
+# update profile
+profile.hireable = true
+updated_profile = client.patch('user', profile)
+updated_profile.hireable = true
+
+# get list of repositories
+repositories = client.get('repositories')
+repository = repositories.first
+
+repository.id                 # 1
+repository.name               # grit
+repository.full_name          # mojombo/grit
+repository.user.id            # 1
+repository.user.login         # mojombo
 ```
 
 ## Development
