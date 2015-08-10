@@ -1,7 +1,12 @@
 module GithubMapper
-  class UserMapper < ApiMapper::Mapper
-    attributes :id, :login
-    entity User
+  class UserMapper < Faceter::Mapper
+    symbolize_keys
+
+    wrap to: :attributes, only: [:id, :login]
+
+    create nil, from: [:attributes] do |attributes|
+      User.new(attributes)
+    end
   end
 
 end
