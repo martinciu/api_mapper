@@ -4,7 +4,7 @@ class GithubIssuesTest < Minitest::Test
   include GithubTestClient
 
   def test_issues_rails
-    VCR.use_cassette("issues_rails") do
+    VCR.use_cassette("github/issues_rails") do
       issues = client.get('repos/rails/rails/issues')
 
       assert_equal 30, issues.count
@@ -22,7 +22,7 @@ class GithubIssuesTest < Minitest::Test
   end
 
   def test_issues_emberjs
-    VCR.use_cassette("issues_emberjs") do
+    VCR.use_cassette("github/issues_emberjs") do
       issues = client.get('repos/emberjs/ember.js/issues')
 
       assert_equal 30, issues.count

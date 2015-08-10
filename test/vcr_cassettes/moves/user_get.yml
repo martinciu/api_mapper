@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.moves-app.com/api/1.1/user/profile
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer secret_token
+      X-Client:
+      - ApiMapper-v0.2.0
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Aug 2015 21:05:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '241'
+      Connection:
+      - keep-alive
+      X-Ratelimit-Hourremaining:
+      - '1998'
+      Etag:
+      - W/"bd75f20cb5faff4e76d1a0ad1e36345f"
+      X-Ratelimit-Hourlimit:
+      - '2000'
+      X-Ratelimit-Minuteremaining:
+      - '58'
+      X-Ratelimit-Minutelimit:
+      - '60'
+    body:
+      encoding: UTF-8
+      string: '{"userId":19893780817643993,"profile":{"firstDate":"20131114","currentTimeZone":{"id":"Europe/Madrid","offset":7200},"localization":{"language":"pl","locale":"en_PL","firstWeekDay":2,"metric":true},"caloriesAvailable":true,"platform":"ios"}}'
+    http_version: 
+  recorded_at: Mon, 10 Aug 2015 21:05:46 GMT
+recorded_with: VCR 2.9.3

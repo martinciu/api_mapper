@@ -12,7 +12,7 @@ class GithubUserTest < Minitest::Test
   end
 
   def test_get_user
-    VCR.use_cassette("user_get") do
+    VCR.use_cassette("github/user_get") do
       user = client.get('user')
 
       assert_equal "martinciu", user.login
@@ -22,7 +22,7 @@ class GithubUserTest < Minitest::Test
   end
 
   def test_path_user
-    VCR.use_cassette("user_patch") do
+    VCR.use_cassette("github/user_patch") do
       user = client.get('user')
 
       assert_equal true, user.hireable

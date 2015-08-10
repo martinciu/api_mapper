@@ -4,6 +4,7 @@ require "json"
 require "transproc/all"
 require "addressable/template"
 require "virtus"
+require "faceter"
 
 require "api_mapper/router"
 require "api_mapper/client"

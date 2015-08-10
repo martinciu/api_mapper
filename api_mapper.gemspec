@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "json", "~> 1.8.3"
   spec.add_dependency "addressable", "~> 2.3.6"
   spec.add_dependency "transproc", "~> 0.3.1"
+  spec.add_dependency "faceter", "~> 0.0.1"
 
   # test mappers dependencies
   spec.add_dependency "anima", "~> 0.2.0"
