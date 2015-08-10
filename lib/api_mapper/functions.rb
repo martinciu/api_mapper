@@ -2,7 +2,7 @@ module ApiMapper
   module Functions
     extend Transproc::Registry
 
-    module HashTransformations
+    module Structure
       def self.structure(hash, key_name, value_name)
         hash.map { |key, value| { key_name => key, value_name => value } }
       end
@@ -14,17 +14,8 @@ module ApiMapper
       end
     end
 
-    module Mapping
-      def self.mapping(hash, mapper)
-        mapper.new.call(hash)
-      end
-    end
-
-    import Transproc::HashTransformations
     import Transproc::ArrayTransformations
-    import Transproc::Conditional
-    import HashTransformations
+    import Structure
     import Factory
-    import Mapping
   end
 end
