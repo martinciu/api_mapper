@@ -1,5 +1,8 @@
 module GithubMapper
   class User
-    include Anima.new(:id, :login)
+    include Virtus.model
+    attribute :id, Integer
+    attribute :login
+    attribute :hireable, Boolean
   end
 end
