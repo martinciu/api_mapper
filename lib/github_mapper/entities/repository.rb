@@ -1,6 +1,7 @@
 module GithubMapper
   class Repository
     include Virtus.model
+
     attribute :id, Integer
     attribute :name
     attribute :full_name

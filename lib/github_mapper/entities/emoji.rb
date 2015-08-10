@@ -1,5 +1,8 @@
 module GithubMapper
   class Emoji
-    include Anima.new(:symbol, :url)
+    include Virtus.model
+
+    attribute :symbol
+    attribute :url
   end
 end

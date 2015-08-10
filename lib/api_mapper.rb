@@ -1,10 +1,10 @@
-require "anima"
 require "faraday"
 require "json"
 require "transproc/all"
 require "addressable/template"
-require "virtus"
 require "faceter"
+
+require "virtus"
 
 require "api_mapper/router"
 require "api_mapper/client"

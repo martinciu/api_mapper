@@ -1,5 +1,10 @@
 module GithubMapper
   class Issue
-    include Anima.new(:id, :number, :title, :user)
+    include Virtus.model
+
+    attribute :id, Integer
+    attribute :number, Integer
+    attribute :title
+    attribute :user, User
   end
 end
