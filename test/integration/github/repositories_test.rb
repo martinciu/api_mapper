@@ -42,5 +42,4 @@ class GithubRepositoriesTest < Minitest::Test
       assert_equal "martinciu", user.login
     end
   end
-
 end

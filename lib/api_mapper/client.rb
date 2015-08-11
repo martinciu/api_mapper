@@ -1,6 +1,5 @@
 module ApiMapper
   class Client
-
     attr_writer :router
 
     def initialize(base_url)

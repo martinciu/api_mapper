@@ -3,7 +3,6 @@ require 'github_test_helper'
 class GithubEmojisTest < Minitest::Test
   include GithubTestClient
 
-
   def test_emojis
     VCR.use_cassette("github/emojis") do
       emojis = client.get('emojis')
@@ -16,5 +15,4 @@ class GithubEmojisTest < Minitest::Test
       assert_equal "https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png?v5", emoji.url
     end
   end
-
 end

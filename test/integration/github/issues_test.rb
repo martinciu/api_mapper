@@ -38,5 +38,4 @@ class GithubIssuesTest < Minitest::Test
       assert_equal "stefanpenner", user.login
     end
   end
-
 end
