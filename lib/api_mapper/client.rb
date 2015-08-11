@@ -36,8 +36,8 @@ module ApiMapper
     def connection
       @connection ||= Faraday.new(url: @base_url) do |conn|
         conn.adapter :net_http
-        conn.headers["Content-Type"] = 'application/json'
-        conn.headers["Accept"] = 'application/json'
+        conn.headers["Content-Type"] = "application/json"
+        conn.headers["Accept"] = "application/json"
         conn.headers["Authorization"] = @authorization if @authorization
         conn.headers["X-Client"] = "ApiMapper-v#{ApiMapper::VERSION}"
       end
