@@ -68,7 +68,7 @@ module ApiMapper
     private
 
     def attributes
-      @model.attributes.select { |_, value| value != nil }
+      @model.attributes.select { |_, value| !value.nil? }
     end
   end
 end
