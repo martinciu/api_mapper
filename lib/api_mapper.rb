@@ -1,6 +1,5 @@
 require "faraday"
 require "json"
-# require "transproc/all"
 require "addressable/template"
 require "faceter"
 
