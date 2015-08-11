@@ -28,6 +28,9 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+
+# Github example
+
 class User
   include Virtus.model
   attribute :id, Integer
@@ -43,15 +46,27 @@ class Repository
   attribute :owner, User
 end
 
+# simple mapper
 class UserMapper < ApiMapper::Mapper
-  attributes :id, :login, :hireable
-  entity User
+  symbolize_keys
+  wrap to: :attributes, only: [:id, :login, :hireable]
+  create nil, from: [:attributes] do |attributes|
+    User.new(attributes)
+  end
 end
 
-class RepositoriesMapper < ApiMapper::ArrayMapper
-  attributes :id, :name, :full_name
-  relationship :owner, UserMapper
-  entity Repository
+# mapper with relationship
+class RepositoriesMapper < ApiMapper::Mapper
+  list do
+    symbolize_keys
+    create :owner, from: [:owner] do |owner|
+      UserMapper.new.call(owner)
+    end
+    wrap to: :attributes, only: [:id, :name, :full_name, :owner]
+    create nil, from: [:attributes] do |attributes|
+      Repository.new(attributes)
+    end
+  end
 end
 
 class Router < ApiMapper::Router
@@ -84,6 +99,50 @@ repository.name               # grit
 repository.full_name          # mojombo/grit
 repository.user.id            # 1
 repository.user.login         # mojombo
+
+# Moves app example (complex mapper)
+
+class Profile
+  include Virtus.model
+  
+  attribute :id, Integer
+  attribute :created_at, Date
+  attribute :locale, String
+  attribute :metric, Boolean
+end
+
+# {
+#    "userId": 23138311640030064,
+#    "profile": {
+#        "firstDate": "20121211",
+#        "currentTimeZone": {
+#            "id": "Europe/Helsinki",
+#            "offset": 10800
+#        },
+#        "localization": {
+#            "language": "en",
+#            "locale": "fi_FI",
+#            "firstWeekDay": 2,
+#            "metric": true
+#        },
+#        "caloriesAvailable": true,
+#        "platform": "ios"
+#    }
+# }
+
+class ProfileMapper < ApiMapper::Mapper
+  symbolize_keys
+  unwrap from: :profile, only: [:localization, :firstDate]
+  unwrap from: :localization, only: [:metric, :locale]
+  rename :firstDate, to: :created_at
+  rename :userId, to: :id
+  wrap to: :attributes, only: [:id, :locale, :metric, :created_at]
+  create nil, from: [:attributes] do |attributes|
+    Profile.new(attributes)
+  end
+end
+
+
 ```
 
 ## Development

@@ -19,13 +19,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version = ">= 2.1"
+
   spec.add_dependency "faraday", "~> 0.9.1"
   spec.add_dependency "json", "~> 1.8.3"
   spec.add_dependency "addressable", "~> 2.3.6"
-  spec.add_dependency "transproc", "~> 0.3.1"
+  spec.add_dependency "faceter", "~> 0.0.1"
 
   # test mappers dependencies
-  spec.add_dependency "anima", "~> 0.2.0"
   spec.add_dependency "virtus", "~> 1.0.5"
 
   spec.add_development_dependency "bundler", "~> 1.10"

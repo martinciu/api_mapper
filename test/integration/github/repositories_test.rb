@@ -12,7 +12,7 @@ class GithubRepositoriesTest < Minitest::Test
   end
 
   def test_repositories
-    VCR.use_cassette("repositories") do
+    VCR.use_cassette("github/repositories") do
       repositories = client.get('repositories')
 
       assert_equal 100, repositories.count
@@ -30,7 +30,7 @@ class GithubRepositoriesTest < Minitest::Test
   end
 
   def test_create
-    VCR.use_cassette("repository_create") do
+    VCR.use_cassette("github/repository_create") do
       new_repository = GithubMapper::Repository.new(name: 'dummy')
       repository = client.post('user/repos', new_repository)
 

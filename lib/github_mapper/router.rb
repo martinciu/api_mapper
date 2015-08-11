@@ -4,7 +4,7 @@ module GithubMapper
     get "repositories", RepositoriesMapper
     post "user/repos", RepositoryMapper
     get "repos/{owner}/{repo}/issues", IssueMapper
-    get "user", ProfileMapper
-    patch "user", ProfileMapper
+    get "user", UserMapper
+    patch "user", UserMapper
   end
 end

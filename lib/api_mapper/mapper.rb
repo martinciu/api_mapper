@@ -1,77 +1,43 @@
 module ApiMapper
-  class Mapper
 
-    def call(origin)
-       self.class.transformation.call(origin)
+  module Functions
+    extend Transproc::Registry
+
+    module Structure
+      def self.structure(hash, key_name, value_name)
+        hash.map { |key, value| { key_name => key, value_name => value } }
+      end
     end
 
-    class << self
-      def attributes(*attributes)
-        @attributes ||= Array(@attributes) + attributes
-      end
+    import ApiMapper::Functions::Structure
+  end
 
-      def entity(klass)
-        @entity = klass
-      end
+  class Structure < AbstractMapper::Branch
+    attribute :key
+    attribute :value
 
-      def relationship(name, mapper = nil)
-        @relationships ||= []
-        @relationships << Relationship.new(name, mapper)
-      end
-
-      def transformation
-        mapping >> factory
-      end
-
-      private
-
-      def all_attributes
-        Array(@attributes) + Array(@relationships).map(&:name)
-      end
-
-      def mapping
-        Array(@relationships).inject(t(:symbolize_keys) >> t(:accept_keys, all_attributes)) do |mapping, relationship|
-          mapping >> t(:map_value, relationship.name, t(:mapping, relationship.mapper))
-        end
-      end
-
-      def factory
-        t(:factory, @entity)
-      end
-
-      def t(*args)
-        Functions[*args]
-      end
+    def transproc
+      Functions[:structure, key, value]
     end
   end
 
-  class HashMapper < Mapper
-    def self.mapping
-      raise "Only one key, pair allowed" if @attributes.count > 1
-      @map = t(:structure, @attributes.first.keys.first, @attributes.first.values.first)
-    end
+  module Coerces
+    extend Transproc::Registry
 
-    def self.factory
-      t(:map_array, super)
+    def self.structure(key, value)
+      { key: key, value: value }
     end
   end
 
-  class ArrayMapper < Mapper
-    def self.mapping
-      t(:map_array, t(:symbolize_keys) >> super)
-    end
-
-    def self.factory
-      t(:map_array, super)
-    end
-  end
-
-  class Relationship
-    attr_reader :name, :mapper
-
-    def initialize(name, mapper)
-      @name = name
-      @mapper = mapper
+  class Mapper < Faceter::Mapper
+    configure do
+      command :structure,      ApiMapper::Structure,         &ApiMapper::Coerces[:structure]
+      command :symbolize_keys, Faceter::Nodes::SymbolizeKeys
+      command :wrap,           Faceter::Nodes::Wrap,         &Faceter::Coercers[:wrap]
+      command :create,         Faceter::Nodes::Create,       &Faceter::Coercers[:create]
+      command :list,           Faceter::Nodes::List
+      command :rename,         Faceter::Nodes::Rename,       &Faceter::Coercers[:rename]
+      command :unwrap,         Faceter::Nodes::Unwrap,       &Faceter::Coercers[:unwrap]
     end
   end
 end

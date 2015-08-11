@@ -5,7 +5,7 @@ class GithubEmojisTest < Minitest::Test
 
 
   def test_emojis
-    VCR.use_cassette("emojis") do
+    VCR.use_cassette("github/emojis") do
       emojis = client.get('emojis')
 
       assert_equal 888, emojis.count
