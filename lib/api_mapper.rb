@@ -11,6 +11,7 @@ require "api_mapper/mapper"
 
 require "api_mapper/version"
 
+# ApiMapper converts API resources into ruby objects
+#
 module ApiMapper
-  # Your code goes here...
 end
