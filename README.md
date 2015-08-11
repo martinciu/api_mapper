@@ -5,6 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/martinciu/api_mapper/badges/gpa.svg)](https://codeclimate.com/github/martinciu/api_mapper)
 [![Test Coverage](https://codeclimate.com/github/martinciu/api_mapper/badges/coverage.svg)](https://codeclimate.com/github/martinciu/api_mapper/coverage)
 [![Dependency Status](https://gemnasium.com/martinciu/api_mapper.svg)](https://gemnasium.com/martinciu/api_mapper)
+[![Inline docs](http://inch-ci.org/github/martinciu/api_mapper.svg?branch=master)](http://inch-ci.org/github/martinciu/api_mapper)
 
 ApiMapper converts API resources into ruby objects
 
