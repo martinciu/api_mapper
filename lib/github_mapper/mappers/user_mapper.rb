@@ -1,5 +1,5 @@
 module GithubMapper
-  class UserMapper < Faceter::Mapper
+  class UserMapper < ApiMapper::Mapper
     symbolize_keys
 
     wrap to: :attributes, only: [:id, :login, :hireable]

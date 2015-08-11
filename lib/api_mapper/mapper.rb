@@ -1,38 +1,43 @@
 module ApiMapper
-  class HashMapper
 
-    def call(origin)
-       self.class.transformation.call(origin)
+  module Functions
+    extend Transproc::Registry
+
+    module Structure
+      def self.structure(hash, key_name, value_name)
+        hash.map { |key, value| { key_name => key, value_name => value } }
+      end
     end
 
-    class << self
-      def attributes(*attributes)
-        @attributes ||= Array(@attributes) + attributes
-      end
+    import ApiMapper::Functions::Structure
+  end
 
-      def entity(klass)
-        @entity = klass
-      end
+  class Structure < AbstractMapper::Branch
+    attribute :key
+    attribute :value
 
-      def transformation
-        mapping >> factory
-      end
-
-      def mapping
-        raise "Only one key, pair allowed" if @attributes.count > 1
-        @map = t(:structure, @attributes.first.keys.first, @attributes.first.values.first)
-      end
-
-      private
-
-      def factory
-        t(:map_array, t(:factory, @entity))
-      end
-
-      def t(*args)
-        Functions[*args]
-      end
+    def transproc
+      Functions[:structure, key, value]
     end
   end
 
+  module Coerces
+    extend Transproc::Registry
+
+    def self.structure(key, value)
+      { key: key, value: value }
+    end
+  end
+
+  class Mapper < Faceter::Mapper
+    configure do
+      command :structure,      ApiMapper::Structure,         &ApiMapper::Coerces[:structure]
+      command :symbolize_keys, Faceter::Nodes::SymbolizeKeys
+      command :wrap,           Faceter::Nodes::Wrap,         &Faceter::Coercers[:wrap]
+      command :create,         Faceter::Nodes::Create,       &Faceter::Coercers[:create]
+      command :list,           Faceter::Nodes::List
+      command :rename,         Faceter::Nodes::Rename,       &Faceter::Coercers[:rename]
+      command :unwrap,         Faceter::Nodes::Unwrap,       &Faceter::Coercers[:unwrap]
+    end
+  end
 end

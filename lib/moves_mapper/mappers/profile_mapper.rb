@@ -1,5 +1,5 @@
 module MovesMapper
-  class ProfileMapper < Faceter::Mapper
+  class ProfileMapper < ApiMapper::Mapper
     symbolize_keys
 
     unwrap from: :profile, only: [:localization, :firstDate]

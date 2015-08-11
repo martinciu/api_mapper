@@ -1,5 +1,5 @@
 module GithubMapper
-  class RepositoriesMapper < Faceter::Mapper
+  class RepositoriesMapper < ApiMapper::Mapper
     list do
       symbolize_keys
 

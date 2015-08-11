@@ -1,5 +1,5 @@
 module GithubMapper
-  class RepositoryMapper < Faceter::Mapper
+  class RepositoryMapper < ApiMapper::Mapper
     symbolize_keys
 
     create :owner, from: [:owner] do |owner|
