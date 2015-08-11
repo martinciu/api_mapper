@@ -30,7 +30,7 @@ module ApiMapper
     end
 
     def response(method, path, body = nil)
-      Response.new(connection.send(method, path, Serializer.new(body).call))
+      Response.new(connection.__send__(method, path, Serializer.new(body).call))
     end
 
     def connection

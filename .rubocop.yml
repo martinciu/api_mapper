@@ -30,7 +30,7 @@ Style/MethodCalledOnDoEndBlock:
   Enabled: true
 
 Style/Send:
-  Enabled: false
+  Enabled: true
 
 Style/CollectionMethods:
   Enabled: true
