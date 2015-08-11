@@ -9,7 +9,7 @@ module ApiMapper
   #   user.login = 'Incognito'
   #   incognito_user = client.patch("user", user)
   #
-  # @attr_writer [ApiMapper::Router] router router used for processing requests
+  # @attr_writer (ApiMapper::Router) router router used for processing requests
   class Client
     attr_writer :router
 
