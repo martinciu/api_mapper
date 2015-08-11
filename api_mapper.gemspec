@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Marcin Ciunelis"]
   spec.email         = ["marcin.ciunelis@gmail.com"]
 
-  spec.summary       = %q(api_mapper converts API resources in to ruby objects)
-  spec.description   = %q()
+  spec.summary       = "api_mapper converts API resources in to ruby objects"
+  spec.description   = ""
   # spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
