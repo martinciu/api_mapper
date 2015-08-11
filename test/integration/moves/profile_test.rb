@@ -22,4 +22,3 @@ class MovesUserTest < Minitest::Test
     end
   end
 end
-
