@@ -29,3 +29,6 @@ Style/TrivialAccessors:
 Style/MethodCalledOnDoEndBlock:
   Enabled: true
 
+Style/Send:
+  Enabled: false
+ 
