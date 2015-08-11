@@ -32,10 +32,18 @@ Or install it yourself as:
 # Github example
 
 class User
-  include Virtus.model
-  attribute :id, Integer
-  attribute :login
-  attribute :hireable, Boolean
+  attr_reader :id, :login
+  def initialize(id, login)
+    @id, @login = id, login
+  end
+end
+
+# simple mapper
+# Mapper have to provide `call` method that accepts hash of attributes
+class UserMapper
+  def call(attributes)
+    User.new(attributes["id"], attributes["login"])
+  end
 end
 
 class Repository
@@ -46,16 +54,9 @@ class Repository
   attribute :owner, User
 end
 
-# simple mapper
-class UserMapper < ApiMapper::Mapper
-  symbolize_keys
-  wrap to: :attributes, only: [:id, :login, :hireable]
-  create nil, from: [:attributes] do |attributes|
-    User.new(attributes)
-  end
-end
-
 # mapper with relationship
+# ApiMapper::Mapper provides DSL from faceter gem
+# https://github.com/nepalez/faceter
 class RepositoriesMapper < ApiMapper::Mapper
   list do
     symbolize_keys
@@ -141,8 +142,6 @@ class ProfileMapper < ApiMapper::Mapper
     Profile.new(attributes)
   end
 end
-
-
 ```
 
 ## Development

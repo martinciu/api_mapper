@@ -37,4 +37,26 @@ class GithubUserTest < Minitest::Test
     end
   end
 
+  class Mapper
+    def call(attributes)
+      { github_id: attributes["id"], user_name: attributes["login"] }
+    end
+  end
+
+  class Router < ApiMapper::Router
+    get "user", Mapper
+  end
+
+  def test_poro_mapper
+    client = ApiMapper::Client.new('https://api.github.com')
+    client.router = Router.new
+    client.authorization("token secret_token")
+
+    VCR.use_cassette("github/user_get") do
+      user = client.get('user')
+
+      assert_equal "martinciu", user[:user_name]
+      assert_equal 34633, user[:github_id]
+    end
+  end
 end
