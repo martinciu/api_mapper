@@ -1,7 +1,7 @@
 Metrics/AbcSize:
   Max: 18
   Exclude:
-    - 'test/integratoin/**/*_test.rb'
+    - "test/**/*_test.rb"
 
 Metrics/LineLength:
   Max: 120
@@ -9,7 +9,7 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 11
   Exclude:
-    - 'test/integratoin/**/*_test.rb'
+    - "test/**/*_test.rb"
 
 Style/Documentation:
   Enabled: false
