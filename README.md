@@ -1,5 +1,6 @@
 # ApiMapper
 
+[![Gem Version](https://badge.fury.io/rb/api_mapper.svg)](http://badge.fury.io/rb/api_mapper)
 [![Build Status](https://travis-ci.org/martinciu/api_mapper.svg?branch=master)](https://travis-ci.org/martinciu/api_mapper)
 [![Code Climate](https://codeclimate.com/github/martinciu/api_mapper/badges/gpa.svg)](https://codeclimate.com/github/martinciu/api_mapper)
 [![Test Coverage](https://codeclimate.com/github/martinciu/api_mapper/badges/coverage.svg)](https://codeclimate.com/github/martinciu/api_mapper/coverage)
