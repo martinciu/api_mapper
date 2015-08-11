@@ -1,5 +1,4 @@
 module ApiMapper
-
   module Functions
     extend Transproc::Registry
 
@@ -31,8 +30,8 @@ module ApiMapper
 
   class Mapper < Faceter::Mapper
     configure do
-      command :structure,      ApiMapper::Structure,         &ApiMapper::Coerces[:structure]
       command :symbolize_keys, Faceter::Nodes::SymbolizeKeys
+      command :structure,      ApiMapper::Structure,         &ApiMapper::Coerces[:structure]
       command :wrap,           Faceter::Nodes::Wrap,         &Faceter::Coercers[:wrap]
       command :create,         Faceter::Nodes::Create,       &Faceter::Coercers[:create]
       command :list,           Faceter::Nodes::List

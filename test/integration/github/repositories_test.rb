@@ -1,4 +1,4 @@
-require 'github_test_helper'
+require "github_test_helper"
 
 class GithubRepositoriesTest < Minitest::Test
   include GithubTestClient
@@ -13,7 +13,7 @@ class GithubRepositoriesTest < Minitest::Test
 
   def test_repositories
     VCR.use_cassette("github/repositories") do
-      repositories = client.get('repositories')
+      repositories = client.get("repositories")
 
       assert_equal 100, repositories.count
       repository = repositories.first
@@ -31,8 +31,8 @@ class GithubRepositoriesTest < Minitest::Test
 
   def test_create
     VCR.use_cassette("github/repository_create") do
-      new_repository = GithubMapper::Repository.new(name: 'dummy')
-      repository = client.post('user/repos', new_repository)
+      new_repository = GithubMapper::Repository.new(name: "dummy")
+      repository = client.post("user/repos", new_repository)
 
       assert_equal "dummy", repository.name
       assert_equal "martinciu/dummy", repository.full_name
@@ -42,5 +42,4 @@ class GithubRepositoriesTest < Minitest::Test
       assert_equal "martinciu", user.login
     end
   end
-
 end

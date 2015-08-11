@@ -1,11 +1,11 @@
-require 'github_test_helper'
+require "github_test_helper"
 
 class GithubIssuesTest < Minitest::Test
   include GithubTestClient
 
   def test_issues_rails
     VCR.use_cassette("github/issues_rails") do
-      issues = client.get('repos/rails/rails/issues')
+      issues = client.get("repos/rails/rails/issues")
 
       assert_equal 30, issues.count
       issue = issues.first
@@ -23,7 +23,7 @@ class GithubIssuesTest < Minitest::Test
 
   def test_issues_emberjs
     VCR.use_cassette("github/issues_emberjs") do
-      issues = client.get('repos/emberjs/ember.js/issues')
+      issues = client.get("repos/emberjs/ember.js/issues")
 
       assert_equal 30, issues.count
       issue = issues.first
@@ -38,5 +38,4 @@ class GithubIssuesTest < Minitest::Test
       assert_equal "stefanpenner", user.login
     end
   end
-
 end

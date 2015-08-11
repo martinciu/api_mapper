@@ -1,7 +1,7 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'api_mapper/version'
+require "api_mapper/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "api_mapper"
@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Marcin Ciunelis"]
   spec.email         = ["marcin.ciunelis@gmail.com"]
 
-  spec.summary       = %q{api_mapper converts API resources in to ruby objects}
-  spec.description   = %q{}
+  spec.summary       = "api_mapper converts API resources in to ruby objects"
+  spec.description   = ""
   # spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr", "~> 2.9.3"
   spec.add_development_dependency "webmock", "~> 1.21.0"
   spec.add_development_dependency "virtus", "~> 1.0.5"
+  spec.add_development_dependency "rubocop", "~> 0.33"
 end

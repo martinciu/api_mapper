@@ -1,4 +1,4 @@
-require 'github_test_helper'
+require "github_test_helper"
 
 class GithubUserTest < Minitest::Test
   include GithubTestClient
@@ -13,7 +13,7 @@ class GithubUserTest < Minitest::Test
 
   def test_get_user
     VCR.use_cassette("github/user_get") do
-      user = client.get('user')
+      user = client.get("user")
 
       assert_equal "martinciu", user.login
       assert_equal 34633, user.id
@@ -23,13 +23,13 @@ class GithubUserTest < Minitest::Test
 
   def test_path_user
     VCR.use_cassette("github/user_patch") do
-      user = client.get('user')
+      user = client.get("user")
 
       assert_equal true, user.hireable
 
       user.hireable = false
 
-      new_user = client.patch('user', user)
+      new_user = client.patch("user", user)
 
       assert_equal "martinciu", new_user.login
       assert_equal 34633, new_user.id
@@ -48,12 +48,12 @@ class GithubUserTest < Minitest::Test
   end
 
   def test_poro_mapper
-    client = ApiMapper::Client.new('https://api.github.com')
+    client = ApiMapper::Client.new("https://api.github.com")
     client.router = Router.new
     client.authorization("token secret_token")
 
     VCR.use_cassette("github/user_get") do
-      user = client.get('user')
+      user = client.get("user")
 
       assert_equal "martinciu", user[:user_name]
       assert_equal 34633, user[:github_id]

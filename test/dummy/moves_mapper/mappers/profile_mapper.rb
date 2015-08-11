@@ -13,7 +13,5 @@ module DummyMovesMapper
     create from: [:attributes] do |attributes|
       Profile.new(attributes)
     end
-
   end
-
 end

@@ -1,6 +1,5 @@
 module ApiMapper
   class Client
-
     attr_writer :router
 
     def initialize(base_url)
@@ -37,8 +36,8 @@ module ApiMapper
     def connection
       @connection ||= Faraday.new(url: @base_url) do |conn|
         conn.adapter :net_http
-        conn.headers["Content-Type"] = 'application/json'
-        conn.headers["Accept"] = 'application/json'
+        conn.headers["Content-Type"] = "application/json"
+        conn.headers["Accept"] = "application/json"
         conn.headers["Authorization"] = @authorization if @authorization
         conn.headers["X-Client"] = "ApiMapper-v#{ApiMapper::VERSION}"
       end
@@ -61,16 +60,19 @@ module ApiMapper
     end
 
     def call
-      attributes.inject({}) do |response, (key, value)|
-        response.merge(key => value)
-      end.to_json if @model
+      serialize.to_json if @model
     end
 
     private
 
+    def serialize
+      attributes.reduce({}) do |response, (key, value)|
+        response.merge(key => value)
+      end
+    end
+
     def attributes
-      @model.attributes.select { |_, value| value != nil }
+      @model.attributes.select { |_, value| !value.nil? }
     end
   end
-
 end
