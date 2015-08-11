@@ -25,3 +25,7 @@ Style/StringLiteralsInInterpolation:
 
 Style/TrivialAccessors:
   AllowDSLWriters: true
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+

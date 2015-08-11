@@ -60,12 +60,16 @@ module ApiMapper
     end
 
     def call
-      attributes.inject({}) do |response, (key, value)|
-        response.merge(key => value)
-      end.to_json if @model
+      serialize.to_json if @model
     end
 
     private
+
+    def serialize
+      attributes.inject({}) do |response, (key, value)|
+        response.merge(key => value)
+      end
+    end
 
     def attributes
       @model.attributes.select { |_, value| !value.nil? }
