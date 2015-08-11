@@ -31,4 +31,6 @@ Style/MethodCalledOnDoEndBlock:
 
 Style/Send:
   Enabled: false
- 
+
+Style/CollectionMethods:
+  Enabled: true

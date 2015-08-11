@@ -66,7 +66,7 @@ module ApiMapper
     private
 
     def serialize
-      attributes.inject({}) do |response, (key, value)|
+      attributes.reduce({}) do |response, (key, value)|
         response.merge(key => value)
       end
     end
