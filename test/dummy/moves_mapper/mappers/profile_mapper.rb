@@ -14,5 +14,4 @@ module DummyMovesMapper
       Profile.new(attributes)
     end
   end
-
 end

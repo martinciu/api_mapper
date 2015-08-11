@@ -1,5 +1,4 @@
 module ApiMapper
-
   module Functions
     extend Transproc::Registry
 

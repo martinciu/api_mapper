@@ -8,5 +8,4 @@ module GithubMapper
       User.new(attributes)
     end
   end
-
 end

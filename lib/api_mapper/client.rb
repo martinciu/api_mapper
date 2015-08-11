@@ -71,5 +71,4 @@ module ApiMapper
       @model.attributes.select { |_, value| value != nil }
     end
   end
-
 end
