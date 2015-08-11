@@ -4,7 +4,7 @@ module GithubMapper
 
     wrap to: :attributes, only: [:id, :login, :hireable]
 
-    create nil, from: [:attributes] do |attributes|
+    create from: [:attributes] do |attributes|
       User.new(attributes)
     end
   end

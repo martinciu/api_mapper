@@ -10,7 +10,7 @@ module MovesMapper
 
     wrap to: :attributes, only: [:id, :locale, :metric, :created_at]
 
-    create nil, from: [:attributes] do |attributes|
+    create from: [:attributes] do |attributes|
       Profile.new(attributes)
     end
 

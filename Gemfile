@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem "codeclimate-test-reporter", group: :test, require: false
+gem 'faceter', git: 'git@github.com:nepalez/faceter.git' # TODO: change to released version

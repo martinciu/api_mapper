@@ -9,10 +9,9 @@ module GithubMapper
 
       wrap to: :attributes, only: [:id, :number, :title, :user]
 
-      create nil, from: [:attributes] do |attributes|
+      create from: [:attributes] do |attributes|
         Issue.new(attributes)
       end
     end
   end
-
 end

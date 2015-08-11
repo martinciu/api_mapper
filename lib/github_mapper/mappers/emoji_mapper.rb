@@ -5,7 +5,7 @@ module GithubMapper
     list do
       wrap to: :attributes, only: [:symbol, :url]
 
-      create nil, from: [:attributes] do |attributes|
+      create from: [:attributes] do |attributes|
         Emoji.new(attributes)
       end
     end

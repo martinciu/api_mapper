@@ -8,7 +8,7 @@ module GithubMapper
 
     wrap to: :attributes, only: [:id, :name, :full_name, :owner]
 
-    create nil, from: [:attributes] do |attributes|
+    create from: [:attributes] do |attributes|
       Repository.new(attributes)
     end
   end
