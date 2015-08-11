@@ -1,4 +1,4 @@
-module MovesMapper
+module DummyMovesMapper
   class ProfileMapper < ApiMapper::Mapper
     symbolize_keys
 
