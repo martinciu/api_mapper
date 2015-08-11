@@ -1,3 +1,6 @@
+require "api_mapper"
+require "virtus"
+
 require "dummy/github_mapper/entities/emoji"
 require "dummy/github_mapper/entities/user"
 require "dummy/github_mapper/entities/repository"

@@ -3,8 +3,6 @@ require "json"
 require "addressable/template"
 require "faceter"
 
-require "virtus"
-
 require "api_mapper/router"
 require "api_mapper/client"
 require "api_mapper/mapper"
