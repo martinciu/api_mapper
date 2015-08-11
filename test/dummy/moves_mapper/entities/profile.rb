@@ -1,4 +1,4 @@
-module MovesMapper
+module DummyMovesMapper
   class Profile
     include Virtus.model
     attribute :id, Integer

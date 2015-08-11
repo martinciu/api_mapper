@@ -26,12 +26,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency "addressable", "~> 2.3.6"
   spec.add_dependency "faceter", "~> 0.0.1"
 
-  # test mappers dependencies
-  spec.add_dependency "virtus", "~> 1.0.5"
-
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.8.0"
   spec.add_development_dependency "vcr", "~> 2.9.3"
   spec.add_development_dependency "webmock", "~> 1.21.0"
+  spec.add_development_dependency "virtus", "~> 1.0.5"
 end
