@@ -1,13 +1,7 @@
 module GithubMapper
-  class EmojiMapper < ApiMapper::Mapper
-    structure :symbol, :url
-
-    list do
-      wrap to: :attributes, only: [:symbol, :url]
-
-      create from: [:attributes] do |attributes|
-        Emoji.new(attributes)
-      end
+  class EmojiMapper
+    def call(elements)
+      [elements[0].map { |key, value| Emoji.new(symbol: key, url: value) }]
     end
   end
 end

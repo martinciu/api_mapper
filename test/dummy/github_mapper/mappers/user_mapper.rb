@@ -1,11 +1,11 @@
 module GithubMapper
-  class UserMapper < ApiMapper::Mapper
-    symbolize_keys
+  class UserMapper < ROM::Mapper
+    reject_keys true
 
-    wrap to: :attributes, only: [:id, :login, :hireable]
+    attribute "id"
+    attribute "login"
+    attribute "hireable"
 
-    create from: [:attributes] do |attributes|
-      User.new(attributes)
-    end
+    model User
   end
 end

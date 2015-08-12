@@ -1,17 +1,17 @@
 module DummyMovesMapper
-  class ProfileMapper < ApiMapper::Mapper
-    symbolize_keys
+  class ProfileMapper < ROM::Mapper
+    reject_keys true
 
-    unwrap from: :profile, only: [:localization, :firstDate]
-    unwrap from: :localization, only: [:metric, :locale]
-
-    rename :firstDate, to: :created_at
-    rename :userId, to: :id
-
-    wrap to: :attributes, only: [:id, :locale, :metric, :created_at]
-
-    create from: [:attributes] do |attributes|
-      Profile.new(attributes)
+    attribute :id, from: "userId"
+    unwrap "profile" do
+      attribute :created_at, from: "firstDate"
+      attribute :metric
+      attribute :locale
+      unwrap "localization" do
+        attribute :metric, from: "metric"
+        attribute :locale, from: "locale"
+      end
     end
+    model Profile
   end
 end

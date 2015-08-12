@@ -34,3 +34,7 @@ Style/Send:
 
 Style/CollectionMethods:
   Enabled: true
+
+Style/FileName:
+  Enabled: false
+
