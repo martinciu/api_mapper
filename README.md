@@ -41,10 +41,10 @@ class User
 end
 
 # simple mapper
-# Mapper have to provide `call` method that accepts hash of attributes
+# Mapper have to provide `call` method that accepts array as an argument
 class UserMapper
-  def call(attributes)
-    User.new(attributes["id"], attributes["login"])
+  def call(origin)
+    origin.map { |attributes| User.new(attributes["id"], attributes["login"]) }
   end
 end
 
@@ -56,10 +56,8 @@ class Repository
   attribute :owner, User
 end
 
-# mapper with relationship
-# ApiMapper::Mapper provides DSL from faceter gem
-# https://github.com/nepalez/faceter
-class RepositoriesMapper < ApiMapper::Mapper
+# Example of complex mapper using  faceter gem (https://github.com/nepalez/faceter)
+class RepositoriesMapper < Faceter::Mapper
   list do
     symbolize_keys
     create :owner, from: [:owner] do |owner|
@@ -73,9 +71,9 @@ class RepositoriesMapper < ApiMapper::Mapper
 end
 
 class Router < ApiMapper::Router
-  get "user", UserMapper
-  patch "user", UserMapper
-  get "repositories", RepositoriesMapper
+  get "user", UserMapper.new
+  patch "user", UserMapper.new
+  get "repositories", RepositoryMapper.build
 end
 
 # client setup
@@ -133,16 +131,20 @@ end
 #    }
 # }
 
-class ProfileMapper < ApiMapper::Mapper
-  symbolize_keys
-  unwrap from: :profile, only: [:localization, :firstDate]
-  unwrap from: :localization, only: [:metric, :locale]
-  rename :firstDate, to: :created_at
-  rename :userId, to: :id
-  wrap to: :attributes, only: [:id, :locale, :metric, :created_at]
-  create from: [:attributes] do |attributes|
-    Profile.new(attributes)
+# Example of complex mapper using rom-mapper gem (https://github.com/rom-rb/rom-mapper)
+class ProfileMapper < ROM::Mapper
+  reject_keys true
+  attribute :id, from: "userId"
+  unwrap "profile" do
+    attribute :created_at, from: "firstDate"
+    attribute :metric
+    attribute :locale
+    unwrap "localization" do
+      attribute :metric, from: "metric"
+      attribute :locale, from: "locale"
+    end
   end
+  model Profile
 end
 ```
 
