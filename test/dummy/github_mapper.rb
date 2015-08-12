@@ -1,5 +1,6 @@
 require "api_mapper"
 require "virtus"
+require "rom-mapper"
 
 require "dummy/github_mapper/entities/emoji"
 require "dummy/github_mapper/entities/user"
@@ -8,7 +9,6 @@ require "dummy/github_mapper/entities/issue"
 
 require "dummy/github_mapper/mappers/emoji_mapper"
 require "dummy/github_mapper/mappers/user_mapper"
-require "dummy/github_mapper/mappers/repositories_mapper"
 require "dummy/github_mapper/mappers/repository_mapper"
 require "dummy/github_mapper/mappers/issue_mapper"
 

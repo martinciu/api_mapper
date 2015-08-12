@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "faraday", "~> 0.9.1"
   spec.add_dependency "json", "~> 1.8.3"
   spec.add_dependency "addressable", "~> 2.3.6"
-  spec.add_dependency "faceter", "~> 0.0.1"
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
@@ -33,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock", "~> 1.21.0"
   spec.add_development_dependency "virtus", "~> 1.0.5"
   spec.add_development_dependency "rubocop", "~> 0.33"
+  spec.add_development_dependency "rom-mapper", "~> 0.2.0"
 end

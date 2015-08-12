@@ -31,7 +31,10 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def get(path)
-      mapper(:get, path).call(response(:get, path).body)
+      response = response(:get, path)
+      mapper = mapper(:get, path)
+
+      map_response(mapper, response)
     end
 
     # Make HTTP PATCH request
@@ -44,7 +47,10 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def patch(path, payload)
-      mapper(:patch, path).call(response(:patch, path, payload).body)
+      mapper = mapper(:patch, path)
+      response = response(:patch, path, payload)
+
+      map_response(mapper, response)
     end
 
     # Make HTTP POST request
@@ -57,7 +63,10 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def post(path, payload)
-      mapper(:post, path).call(response(:post, path, payload).body)
+      mapper = mapper(:post, path)
+      response = response(:post, path, payload)
+
+      map_response(mapper, response)
     end
 
     # Authorize client using `Authorization` HTTP header
@@ -73,8 +82,17 @@ module ApiMapper
 
     private
 
+    def map_response(mapper, response)
+      body = response.body
+      if body.is_a? Hash
+        mapper.call([body])[0]
+      else
+        mapper.call(body)
+      end
+    end
+
     def mapper(method, path)
-      @router.resolve(method, path).mapper.new
+      @router.resolve(method, path).mapper
     end
 
     def response(method, path, body = nil)

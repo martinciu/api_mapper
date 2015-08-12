@@ -1,5 +1,6 @@
 require "api_mapper"
 require "virtus"
+require "rom-mapper"
 
 require "dummy/moves_mapper/entities/profile"
 

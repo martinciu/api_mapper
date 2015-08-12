@@ -1,15 +1,10 @@
 module GithubMapper
-  class RepositoryMapper < ApiMapper::Mapper
-    symbolize_keys
+  class RepositoryMapper < ROM::Mapper
+    attribute "id"
+    attribute "name"
+    attribute "full_name"
 
-    create :owner, from: [:owner] do |owner|
-      UserMapper.new.call(owner)
-    end
-
-    wrap to: :attributes, only: [:id, :name, :full_name, :owner]
-
-    create from: [:attributes] do |attributes|
-      Repository.new(attributes)
-    end
+    embedded "owner", type: :hash, mapper: UserMapper
+    model Repository
   end
 end

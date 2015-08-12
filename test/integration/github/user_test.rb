@@ -38,13 +38,13 @@ class GithubUserTest < Minitest::Test
   end
 
   class Mapper
-    def call(attributes)
-      { github_id: attributes["id"], user_name: attributes["login"] }
+    def call(elements)
+      elements.map { |attributes| { github_id: attributes["id"], user_name: attributes["login"] } }
     end
   end
 
   class Router < ApiMapper::Router
-    get "user", Mapper
+    get "user", Mapper.new
   end
 
   def test_poro_mapper
