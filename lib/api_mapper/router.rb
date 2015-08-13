@@ -1,4 +1,13 @@
 module ApiMapper
+  ##
+  # Router defines all routes available for an API
+  #
+  # @example
+  #   class MyRouter < ApiMapper::Router
+  #     get 'user/{id}', UserMapper.new
+  #     patch 'user', UserMapper.new
+  #     get 'user/{id}/messages', MessageMapper.new
+  #   end
   class Router
     class << self
       ##
