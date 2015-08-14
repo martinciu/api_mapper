@@ -80,15 +80,37 @@ module ApiMapper
     end
   end
 
+  ##
+  # Represents route defined in router
+  #
+  # @attr_reader (Object) mapper mapper for the route
+  #
+  # @api private
   class Route
     attr_reader :mapper
 
+    ##
+    # Creates new route
+    #
+    # @param (Symbol) method HTTP method one of :get, :patch, :post
+    # @param (String) path URI template based on RFC 6570 (http://tools.ietf.org/html/rfc6570)
+    # @param (Object) mapper mapper for the route
+    #
+    # @api private
     def initialize(method, path, mapper)
       @method = method
       @path = Addressable::Template.new(path)
       @mapper = mapper
     end
 
+    ##
+    # Check if fiven method and path matches a route
+    #
+    # @param (Symbol) method HTTP method one of :get, :patch, :post
+    # @param (String) path request path
+    # @return (Boolean)
+    #
+    # @api private
     def match(method, path)
       @method == method && @path.match(path)
     end
