@@ -110,21 +110,42 @@ module ApiMapper
     end
   end
 
+  ##
+  # HTTP response parser
+  #
+  # @api private
   class Response
-    def initialize(raw)
-      @raw = raw
+    # Creates new Response
+    #
+    # @param response raw HTTP response
+    def initialize(response)
+      @raw = response
     end
 
+    ##
+    # Parsed response body
+    #
+    # @return (Hash)
     def body
       JSON.parse(@raw.body)
     end
   end
-
+  ##
+  # Serialized object before sending to API endpoint
+  # Currently only simple attributes based serializer is available
+  #
+  # @api private
   class Serializer
+    # Creates new serializer
+    #
+    # @param model model to serialize
     def initialize(model)
       @model = model
     end
 
+    # Returns serialized model representation
+    #
+    # @return (String) model serialized to JSON string
     def call
       serialize.to_json if @model
     end
