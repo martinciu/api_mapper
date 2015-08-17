@@ -1,6 +1,6 @@
 module GithubMapper
   class Issue
-    include Virtus.model
+    include ROM::Model::Attributes
 
     attribute :id, Integer
     attribute :number, Integer
