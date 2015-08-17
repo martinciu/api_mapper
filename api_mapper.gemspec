@@ -33,4 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "virtus", "~> 1.0.5"
   spec.add_development_dependency "rubocop", "~> 0.33"
   spec.add_development_dependency "rom-mapper", "~> 0.2.0"
+  spec.add_development_dependency "rom-model"
+  spec.add_development_dependency "rom"
 end

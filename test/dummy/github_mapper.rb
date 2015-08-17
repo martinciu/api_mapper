@@ -1,6 +1,7 @@
 require "api_mapper"
 require "virtus"
 require "rom-mapper"
+require "rom-model"
 
 require "dummy/github_mapper/entities/emoji"
 require "dummy/github_mapper/entities/user"
