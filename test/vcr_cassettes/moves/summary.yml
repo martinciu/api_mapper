@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.moves-app.com/api/1.1/user/summary/daily/20150818
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer JUl5GCubYSBq_ThY7QGXQQ63eR_66Ok3c80Uq2LS0GD5TXQer2e720HhE4oi6cX_
+      X-Client:
+      - ApiMapper-v0.3.0
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 19 Aug 2015 21:39:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      X-Ratelimit-Hourremaining:
+      - '1999'
+      Last-Modified:
+      - Tue, 18 Aug 2015 14:04:07 GMT
+      Etag:
+      - W/"2051ca0b6e46611a5e4d23692adcae69"
+      X-Ratelimit-Hourlimit:
+      - '2000'
+      X-Ratelimit-Minuteremaining:
+      - '59'
+      X-Ratelimit-Minutelimit:
+      - '60'
+    body:
+      encoding: UTF-8
+      string: '[{"date":"20150818","summary":[{"activity":"walking","group":"walking","duration":902.0,"distance":922.0,"steps":1259,"calories":52}],"caloriesIdle":1634,"lastUpdate":"20150818T140407Z"}]'
+    http_version: 
+  recorded_at: Wed, 19 Aug 2015 21:39:46 GMT
+recorded_with: VCR 2.9.3
