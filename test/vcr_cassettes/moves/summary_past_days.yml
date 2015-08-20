@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.moves-app.com/api/1.1/user/summary/daily?pastDays=23
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer JUl5GCubYSBq_ThY7QGXQQ63eR_66Ok3c80Uq2LS0GD5TXQer2e720HhE4oi6cX_
+      X-Client:
+      - ApiMapper-v0.3.0
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 20 Aug 2015 21:15:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Ratelimit-Hourremaining:
+      - '1993'
+      Last-Modified:
+      - Thu, 20 Aug 2015 20:22:13 GMT
+      X-Ratelimit-Hourlimit:
+      - '2000'
+      X-Ratelimit-Minuteremaining:
+      - '59'
+      X-Ratelimit-Minutelimit:
+      - '60'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"date":"20150729","summary":[{"activity":"walking","group":"walking","duration":5751.0,"distance":6779.0,"steps":9276,"calories":385},{"activity":"transport","group":"transport","duration":4536.0,"distance":34441.0}],"caloriesIdle":1634,"lastUpdate":"20150730T001745Z"},{"date":"20150730","summary":[{"activity":"walking","group":"walking","duration":5305.0,"distance":5809.0,"steps":7851,"calories":330},{"activity":"transport","group":"transport","duration":5926.0,"distance":38124.0}],"caloriesIdle":1634,"lastUpdate":"20150731T101649Z"},{"date":"20150731","summary":[{"activity":"walking","group":"walking","duration":3797.0,"distance":4322.0,"steps":5575,"calories":245},{"activity":"transport","group":"transport","duration":14126.0,"distance":251015.0}],"caloriesIdle":1634,"lastUpdate":"20150801T112002Z"},{"date":"20150801","summary":[{"activity":"walking","group":"walking","duration":4509.0,"distance":4336.0,"steps":6040,"calories":246},{"activity":"transport","group":"transport","duration":2411.0,"distance":15889.0}],"caloriesIdle":1634,"lastUpdate":"20150802T103436Z"},{"date":"20150802","summary":[{"activity":"walking","group":"walking","duration":3969.0,"distance":4168.0,"steps":5330,"calories":236},{"activity":"transport","group":"transport","duration":23279.0,"distance":2263414.0}],"caloriesIdle":1634,"lastUpdate":"20150803T002811Z"},{"date":"20150803","summary":[{"activity":"transport","group":"transport","duration":3085.0,"distance":162848.0},{"activity":"walking","group":"walking","duration":3500.0,"distance":3642.0,"steps":5134,"calories":207},{"activity":"cycling","group":"cycling","duration":1499.0,"distance":5235.0,"calories":136},{"activity":"swimming","duration":1541.0,"calories":146}],"caloriesIdle":1634,"lastUpdate":"20150803T205850Z"},{"date":"20150804","summary":[{"activity":"walking","group":"walking","duration":622.0,"distance":514.0,"steps":770,"calories":29},{"activity":"cycling","group":"cycling","duration":1022.0,"distance":4036.0,"calories":104},{"activity":"swimming","duration":1750.0,"calories":165},{"activity":"transport","group":"transport","duration":21.0,"distance":398.0}],"caloriesIdle":1634,"lastUpdate":"20150805T200505Z"},{"date":"20150805","summary":[{"activity":"walking","group":"walking","duration":4488.0,"distance":5292.0,"steps":7008,"calories":300},{"activity":"transport","group":"transport","duration":811.0,"distance":3071.0}],"caloriesIdle":1634,"lastUpdate":"20150805T213556Z"},{"date":"20150806","summary":[{"activity":"walking","group":"walking","duration":1419.0,"distance":1478.0,"steps":1764,"calories":84},{"activity":"cycling","group":"cycling","duration":1306.0,"distance":4157.0,"calories":109},{"activity":"swimming","duration":672.0,"calories":64}],"caloriesIdle":1634,"lastUpdate":"20150807T201046Z"},{"date":"20150807","summary":[{"activity":"walking","group":"walking","duration":3026.0,"distance":3835.0,"steps":4843,"calories":218}],"caloriesIdle":1634,"lastUpdate":"20150808T004320Z"},{"date":"20150808","summary":[{"activity":"walking","group":"walking","duration":5849.0,"distance":6512.0,"steps":7676,"calories":369},{"activity":"cycling","group":"cycling","duration":5156.0,"distance":20098.0,"calories":516},{"activity":"transport","group":"transport","duration":541.0,"distance":1659.0},{"activity":"running","group":"running","duration":2079.0,"distance":4692.0,"steps":3167,"calories":327}],"caloriesIdle":1634,"lastUpdate":"20150809T012954Z"},{"date":"20150809","summary":[{"activity":"walking","group":"walking","duration":8398.0,"distance":9447.0,"steps":12550,"calories":536},{"activity":"transport","group":"transport","duration":2463.0,"distance":24412.0}],"caloriesIdle":1634,"lastUpdate":"20150810T223911Z"},{"date":"20150810","summary":[{"activity":"walking","group":"walking","duration":2564.0,"distance":2426.0,"steps":3245,"calories":138}],"caloriesIdle":1634,"lastUpdate":"20150812T210901Z"},{"date":"20150811","summary":[{"activity":"walking","group":"walking","duration":1085.0,"distance":921.0,"steps":1227,"calories":52}],"caloriesIdle":1634,"lastUpdate":"20150812T210901Z"},{"date":"20150812","summary":[{"activity":"walking","group":"walking","duration":390.0,"distance":362.0,"steps":521,"calories":21}],"caloriesIdle":1634,"lastUpdate":"20150813T114559Z"},{"date":"20150813","summary":[{"activity":"walking","group":"walking","duration":3143.0,"distance":3183.0,"steps":3904,"calories":181},{"activity":"cycling","group":"cycling","duration":4075.0,"distance":17353.0,"calories":442},{"activity":"transport","group":"transport","duration":841.0,"distance":2611.0},{"activity":"running","group":"running","duration":967.0,"distance":2070.0,"steps":1380,"calories":145}],"caloriesIdle":1634,"lastUpdate":"20150815T120633Z"},{"date":"20150814","summary":[{"activity":"walking","group":"walking","duration":60.0,"distance":35.0,"steps":72,"calories":2}],"caloriesIdle":1634,"lastUpdate":"20150815T120633Z"},{"date":"20150815","summary":[{"activity":"walking","group":"walking","duration":7426.0,"distance":7695.0,"steps":9163,"calories":437},{"activity":"cycling","group":"cycling","duration":7230.0,"distance":28182.0,"calories":724},{"activity":"transport","group":"transport","duration":1584.0,"distance":4991.0},{"activity":"running","group":"running","duration":1127.0,"distance":2350.0,"steps":1549,"calories":165}],"caloriesIdle":1634,"lastUpdate":"20150815T231556Z"},{"date":"20150816","summary":[{"activity":"walking","group":"walking","duration":18112.0,"distance":20352.0,"steps":26932,"calories":1155},{"activity":"transport","group":"transport","duration":2997.0,"distance":10222.0},{"activity":"running","group":"running","duration":654.0,"distance":990.0,"steps":1414,"calories":72}],"caloriesIdle":1634,"lastUpdate":"20150817T145019Z"},{"date":"20150817","summary":[{"activity":"walking","group":"walking","duration":30.0,"distance":15.0,"steps":30,"calories":1}],"caloriesIdle":1634,"lastUpdate":"20150818T122958Z"},{"date":"20150818","summary":[{"activity":"walking","group":"walking","duration":902.0,"distance":922.0,"steps":1259,"calories":52}],"caloriesIdle":1634,"lastUpdate":"20150818T140407Z"},{"date":"20150819","summary":[{"activity":"walking","group":"walking","duration":2250.0,"distance":3121.0,"steps":2714,"calories":177},{"activity":"cycling","group":"cycling","duration":3763.0,"distance":16447.0,"calories":418},{"activity":"transport","group":"transport","duration":2583.0,"distance":7875.0},{"activity":"running","group":"running","duration":2134.0,"distance":4800.0,"steps":3212,"calories":335}],"caloriesIdle":1634,"lastUpdate":"20150820T112535Z"},{"date":"20150820","summary":[{"activity":"walking","group":"walking","duration":2310.0,"distance":2787.0,"steps":3585,"calories":158},{"activity":"cycling","group":"cycling","duration":581.0,"distance":2061.0,"calories":53}],"caloriesIdle":1634,"lastUpdate":"20150820T202213Z"}]'
+    http_version: 
+  recorded_at: Thu, 20 Aug 2015 21:15:46 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.moves-app.com/api/1.1/user/summary/daily/2015-W10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer JUl5GCubYSBq_ThY7QGXQQ63eR_66Ok3c80Uq2LS0GD5TXQer2e720HhE4oi6cX_
+      X-Client:
+      - ApiMapper-v0.3.0
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 20 Aug 2015 21:19:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Ratelimit-Hourremaining:
+      - '1992'
+      Last-Modified:
+      - Sun, 08 Mar 2015 22:48:52 GMT
+      X-Ratelimit-Hourlimit:
+      - '2000'
+      X-Ratelimit-Minuteremaining:
+      - '59'
+      X-Ratelimit-Minutelimit:
+      - '60'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"date":"20150302","summary":[{"activity":"walking","group":"walking","duration":4721.0,"distance":5395.0,"steps":7323,"calories":306},{"activity":"transport","group":"transport","duration":2694.0,"distance":13371.0}],"caloriesIdle":1634,"lastUpdate":"20150303T134044Z"},{"date":"20150303","summary":[{"activity":"walking","group":"walking","duration":5444.0,"distance":6385.0,"steps":8285,"calories":362}],"caloriesIdle":1634,"lastUpdate":"20150304T204840Z"},{"date":"20150304","summary":[{"activity":"walking","group":"walking","duration":8078.0,"distance":9512.0,"steps":12880,"calories":540},{"activity":"transport","group":"transport","duration":3706.0,"distance":26419.0}],"caloriesIdle":1634,"lastUpdate":"20150305T012104Z"},{"date":"20150305","summary":[{"activity":"walking","group":"walking","duration":2836.0,"distance":3243.0,"steps":4897,"calories":184}],"caloriesIdle":1634,"lastUpdate":"20150306T164351Z"},{"date":"20150306","summary":[{"activity":"walking","group":"walking","duration":5553.0,"distance":6359.0,"steps":8474,"calories":361},{"activity":"cycling","group":"cycling","duration":2546.0,"distance":8073.0,"calories":212},{"activity":"transport","group":"transport","duration":1819.0,"distance":9834.0}],"caloriesIdle":1634,"lastUpdate":"20150307T181205Z"},{"date":"20150307","summary":[{"activity":"walking","group":"walking","duration":3024.0,"distance":3727.0,"steps":4396,"calories":211},{"activity":"cycling","group":"cycling","duration":9571.0,"distance":31776.0,"calories":830},{"activity":"transport","group":"transport","duration":3521.0,"distance":16346.0},{"activity":"running","group":"running","duration":1757.0,"distance":4797.0,"steps":3200,"calories":330}],"caloriesIdle":1634,"lastUpdate":"20150308T092612Z"},{"date":"20150308","summary":[{"activity":"walking","group":"walking","duration":13136.0,"distance":12728.0,"steps":17925,"calories":722},{"activity":"transport","group":"transport","duration":8566.0,"distance":159475.0},{"activity":"train","group":"transport","duration":3105.0,"distance":102391.0}],"caloriesIdle":1634,"lastUpdate":"20150308T224852Z"}]'
+    http_version: 
+  recorded_at: Thu, 20 Aug 2015 21:19:01 GMT
+recorded_with: VCR 2.9.3
