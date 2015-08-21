@@ -15,6 +15,8 @@ require "dummy/moves_mapper/mappers/day_mapper"
 
 require "dummy/moves_mapper/router"
 
+require "dummy/moves_mapper/summaries_repository"
+
 module DummyMovesMapper
   # Your code goes here...
 end

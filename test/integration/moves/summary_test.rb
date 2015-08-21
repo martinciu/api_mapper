@@ -106,4 +106,26 @@ class MovesActivityTypeTest < Minitest::Test
     end
   end
 
+  def test_repository_by_date
+    VCR.use_cassette("moves/summary_day") do
+      repository = DummyMovesMapper::SummariesRepository.new(client)
+      date = Date.parse("2015-08-18")
+
+      days = repository.find_by_date(date)
+
+      assert_equal 1, days.count
+
+      day = days[0]
+
+      assert_equal Date.parse("2015-08-18"), day.date
+
+      summaries = day.summaries
+      assert_equal 1, summaries.size
+
+      summary = summaries[0]
+
+      assert_equal "walking", summary.activity
+    end
+  end
+
 end
