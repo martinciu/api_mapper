@@ -15,7 +15,7 @@ class MovesActivityTypeTest < Minitest::Test
       assert_equal false, activity_type.geo
       assert_equal true, activity_type.place
       assert_equal "bc4fff", activity_type.color
-      assert_equal ["duration", "calories"], activity_type.units.map(&:name)
+      assert_equal %w(duration calories), activity_type.units.map(&:name)
     end
   end
 end
