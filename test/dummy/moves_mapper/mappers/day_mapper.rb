@@ -7,6 +7,7 @@ module DummyMovesMapper
     attribute :calories_idle, from: "caloriesIdle"
 
     embedded :summaries, from: "summary", mapper: SummaryMapper
+    embedded :segments, from: "segments", mapper: SegmentMapper
 
     model Day
   end

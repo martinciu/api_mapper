@@ -1,5 +1,5 @@
 module DummyMovesMapper
-  class SummariesRepository
+  class StorylinesRepository
     def initialize(client)
       @client = client
     end
@@ -27,11 +27,11 @@ module DummyMovesMapper
     private
 
     def get_storylines(options)
-      @client.get(uri_template.expand(options))
+      @client.get(uri_template.expand(options.merge(default_options)))
     end
 
     def uri_template
-      Addressable::Template.new("user/summary/daily{/date}{?from,to,pastDays,updatedSince,timeZone}")
+      Addressable::Template.new("user/storyline/daily{/date}{?from,to,pastDays,updatedSince,timeZone,trackPoints}")
     end
 
     def parse_month(date)
@@ -44,6 +44,10 @@ module DummyMovesMapper
 
     def parse_day(date)
       date.strftime("%Y%m%d")
+    end
+
+    def default_options
+      { trackPoint: true }
     end
   end
 end

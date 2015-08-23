@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.moves-app.com/api/1.1/user/storyline/daily/20150818
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer JUl5GCubYSBq_ThY7QGXQQ63eR_66Ok3c80Uq2LS0GD5TXQer2e720HhE4oi6cX_
+      X-Client:
+      - ApiMapper-v0.3.0
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 22 Aug 2015 13:07:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Ratelimit-Hourremaining:
+      - '1999'
+      Last-Modified:
+      - Wed, 19 Aug 2015 19:42:14 GMT
+      X-Ratelimit-Hourlimit:
+      - '2000'
+      X-Ratelimit-Minuteremaining:
+      - '59'
+      X-Ratelimit-Minutelimit:
+      - '60'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"date":"20150818","summary":[{"activity":"walking","group":"walking","duration":902.0,"distance":922.0,"steps":1259,"calories":52}],"segments":[{"type":"place","startTime":"20150817T121238+0200","endTime":"20150818T134449+0200","place":{"id":52866264,"name":"Home","type":"home","location":{"lat":41.3872807099,"lon":2.1798798024}},"lastUpdate":"20150818T122958Z"},{"type":"move","startTime":"20150818T134449+0200","endTime":"20150818T135034+0200","activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T134449+0200","endTime":"20150818T135035+0200","duration":346.0,"distance":249.0,"steps":470,"calories":14}],"lastUpdate":"20150818T122958Z"},{"type":"place","startTime":"20150818T135034+0200","endTime":"20150818T141605+0200","place":{"id":60610892,"name":"Mercat
+        de Santa Caterina","type":"foursquare","foursquareId":"4adcda5cf964a520634421e3","foursquareCategoryIds":["4bf58dd8d48988d1fa941735"],"location":{"lat":41.38629331816544,"lon":2.178177759858853}},"activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T140034+0200","endTime":"20150818T140434+0200","duration":240.0,"distance":299.0,"steps":398,"calories":17}],"lastUpdate":"20150818T140407Z"},{"type":"move","startTime":"20150818T141605+0200","endTime":"20150818T142121+0200","activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T141605+0200","endTime":"20150818T142121+0200","duration":316.0,"distance":374.0,"steps":391,"calories":21}],"lastUpdate":"20150818T140407Z"},{"type":"place","startTime":"20150818T142121+0200","endTime":"20150819T173400+0200","place":{"id":52866264,"name":"Home","type":"home","location":{"lat":41.3872807099,"lon":2.1798798024}},"lastUpdate":"20150819T194214Z"}],"caloriesIdle":1634,"lastUpdate":"20150819T194214Z"}]'
+    http_version: 
+  recorded_at: Sat, 22 Aug 2015 13:07:59 GMT
+recorded_with: VCR 2.9.3
