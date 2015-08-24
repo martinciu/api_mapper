@@ -2,7 +2,7 @@ module DummyMovesMapper
   class Activity
     include Virtus.model
 
-    attribute :name
+    attribute :activity
     attribute :type
     attribute :started_at, Time
     attribute :finished_at, Time
