@@ -37,7 +37,7 @@ class MovesStorylineTest < Minitest::Test
       activity = activities[0]
       assert_equal "walking", activity.activity
 
-      track_points = activity.track_points
+      track_points = activity.trackPoints
       assert_equal 10, track_points.count
 
 

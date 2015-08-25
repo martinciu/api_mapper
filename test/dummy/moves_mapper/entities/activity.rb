@@ -12,6 +12,6 @@ module DummyMovesMapper
     attribute :calories, Integer
     attribute :updated_at, Time
     attribute :manual, Boolean
-    attribute :track_points, [TrackPoint]
+    attribute :trackPoints, [TrackPoint]
   end
 end

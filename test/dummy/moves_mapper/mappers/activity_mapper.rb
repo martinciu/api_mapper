@@ -1,6 +1,6 @@
 module DummyMovesMapper
   class ActivityMapper < ROM::Mapper
-    reject_keys true
+    # reject_keys true
 
     attribute "activity"
     attribute "group"
@@ -12,8 +12,9 @@ module DummyMovesMapper
     attribute "calories"
     attribute "updated_at"
     attribute "manual"
+    attribute "trackPoints"
 
-    embedded "track_points", from: "trackPoints", mapper: TrackPointMapper
+    # embedded "track_points", from: "trackPoints", mapper: TrackPointMapper
 
     model Activity
   end

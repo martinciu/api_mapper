@@ -10,7 +10,7 @@ module DummyMovesMapper
     attribute :activities, from: "activities", default: []
 
     # embedded :place, mapper: PlaceMapper, type: :hash
-    # embedded :activities, mapper: ActivityMapper
+    embedded :activities, mapper: ActivityMapper
 
     model Segment
   end
