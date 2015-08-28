@@ -47,7 +47,7 @@ module DummyMovesMapper
     end
 
     def default_options
-      { trackPoint: true }
+      { trackPoints: true }
     end
   end
 end

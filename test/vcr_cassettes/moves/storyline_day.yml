@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.moves-app.com/api/1.1/user/storyline/daily/20150818
+    uri: https://api.moves-app.com/api/1.1/user/storyline/daily/20150818?trackPoints=true
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sat, 22 Aug 2015 13:07:59 GMT
+      - Fri, 28 Aug 2015 23:30:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -37,7 +37,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Ratelimit-Hourremaining:
-      - '1999'
+      - '1998'
       Last-Modified:
       - Wed, 19 Aug 2015 19:42:14 GMT
       X-Ratelimit-Hourlimit:
@@ -48,8 +48,8 @@ http_interactions:
       - '60'
     body:
       encoding: ASCII-8BIT
-      string: '[{"date":"20150818","summary":[{"activity":"walking","group":"walking","duration":902.0,"distance":922.0,"steps":1259,"calories":52}],"segments":[{"type":"place","startTime":"20150817T121238+0200","endTime":"20150818T134449+0200","place":{"id":52866264,"name":"Home","type":"home","location":{"lat":41.3872807099,"lon":2.1798798024}},"lastUpdate":"20150818T122958Z"},{"type":"move","startTime":"20150818T134449+0200","endTime":"20150818T135034+0200","activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T134449+0200","endTime":"20150818T135035+0200","duration":346.0,"distance":249.0,"steps":470,"calories":14}],"lastUpdate":"20150818T122958Z"},{"type":"place","startTime":"20150818T135034+0200","endTime":"20150818T141605+0200","place":{"id":60610892,"name":"Mercat
-        de Santa Caterina","type":"foursquare","foursquareId":"4adcda5cf964a520634421e3","foursquareCategoryIds":["4bf58dd8d48988d1fa941735"],"location":{"lat":41.38629331816544,"lon":2.178177759858853}},"activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T140034+0200","endTime":"20150818T140434+0200","duration":240.0,"distance":299.0,"steps":398,"calories":17}],"lastUpdate":"20150818T140407Z"},{"type":"move","startTime":"20150818T141605+0200","endTime":"20150818T142121+0200","activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T141605+0200","endTime":"20150818T142121+0200","duration":316.0,"distance":374.0,"steps":391,"calories":21}],"lastUpdate":"20150818T140407Z"},{"type":"place","startTime":"20150818T142121+0200","endTime":"20150819T173400+0200","place":{"id":52866264,"name":"Home","type":"home","location":{"lat":41.3872807099,"lon":2.1798798024}},"lastUpdate":"20150819T194214Z"}],"caloriesIdle":1634,"lastUpdate":"20150819T194214Z"}]'
+      string: '[{"date":"20150818","summary":[{"activity":"walking","group":"walking","duration":902.0,"distance":922.0,"steps":1259,"calories":52}],"segments":[{"type":"place","startTime":"20150817T121238+0200","endTime":"20150818T134449+0200","place":{"id":52866264,"name":"Home","type":"home","location":{"lat":41.3872807099,"lon":2.1798798024}},"lastUpdate":"20150818T122958Z"},{"type":"move","startTime":"20150818T134449+0200","endTime":"20150818T135034+0200","activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T134449+0200","endTime":"20150818T135035+0200","duration":346.0,"distance":249.0,"steps":470,"calories":14,"trackPoints":[{"lat":41.3872807099,"lon":2.1798798024,"time":"20150818T134449+0200"},{"lat":41.3872367466,"lon":2.1798082562,"time":"20150818T134525+0200"},{"lat":41.3872179234,"lon":2.1799654089,"time":"20150818T134546+0200"},{"lat":41.3872307155,"lon":2.1799560025,"time":"20150818T134615+0200"},{"lat":41.3872988253,"lon":2.1796924238,"time":"20150818T134728+0200"},{"lat":41.3872680928,"lon":2.1794666799,"time":"20150818T134751+0200"},{"lat":41.3870086559,"lon":2.1789847378,"time":"20150818T134825+0200"},{"lat":41.3868204414,"lon":2.1787706641,"time":"20150818T134844+0200"},{"lat":41.3865936319,"lon":2.178566934,"time":"20150818T134903+0200"},{"lat":41.3864210188,"lon":2.1785080564,"time":"20150818T134921+0200"},{"lat":41.3863182256,"lon":2.1784535869,"time":"20150818T134938+0200"},{"lat":41.3862731521,"lon":2.1783614635,"time":"20150818T134954+0200"},{"lat":41.3862965685,"lon":2.1784052729,"time":"20150818T135014+0200"},{"lat":41.3862933182,"lon":2.1781777599,"time":"20150818T135034+0200"}]}],"lastUpdate":"20150818T122958Z"},{"type":"place","startTime":"20150818T135034+0200","endTime":"20150818T141605+0200","place":{"id":60610892,"name":"Mercat
+        de Santa Caterina","type":"foursquare","foursquareId":"4adcda5cf964a520634421e3","foursquareCategoryIds":["4bf58dd8d48988d1fa941735"],"location":{"lat":41.38629331816544,"lon":2.178177759858853}},"activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T140034+0200","endTime":"20150818T140434+0200","duration":240.0,"distance":299.0,"steps":398,"calories":17,"trackPoints":[]}],"lastUpdate":"20150818T140407Z"},{"type":"move","startTime":"20150818T141605+0200","endTime":"20150818T142121+0200","activities":[{"activity":"walking","group":"walking","manual":false,"startTime":"20150818T141605+0200","endTime":"20150818T142121+0200","duration":316.0,"distance":374.0,"steps":391,"calories":21,"trackPoints":[{"lat":41.3862933182,"lon":2.1781777599,"time":"20150818T141605+0200"},{"lat":41.3857929624,"lon":2.1797038701,"time":"20150818T141624+0200"},{"lat":41.3870286164,"lon":2.1801608333,"time":"20150818T141812+0200"},{"lat":41.3872440939,"lon":2.1800388092,"time":"20150818T141830+0200"},{"lat":41.3872822851,"lon":2.1800188646,"time":"20150818T141851+0200"},{"lat":41.3872347554,"lon":2.1800307601,"time":"20150818T141923+0200"},{"lat":41.3872358103,"lon":2.1800536409,"time":"20150818T141938+0200"},{"lat":41.3872130045,"lon":2.1800863325,"time":"20150818T141954+0200"},{"lat":41.3871886166,"lon":2.1801088541,"time":"20150818T142019+0200"},{"lat":41.3871831544,"lon":2.1800885069,"time":"20150818T142042+0200"},{"lat":41.3872807099,"lon":2.1798798024,"time":"20150818T142121+0200"}]}],"lastUpdate":"20150818T140407Z"},{"type":"place","startTime":"20150818T142121+0200","endTime":"20150819T173400+0200","place":{"id":52866264,"name":"Home","type":"home","location":{"lat":41.3872807099,"lon":2.1798798024}},"lastUpdate":"20150819T194214Z"}],"caloriesIdle":1634,"lastUpdate":"20150819T194214Z"}]'
     http_version: 
-  recorded_at: Sat, 22 Aug 2015 13:07:59 GMT
+  recorded_at: Fri, 28 Aug 2015 23:30:05 GMT
 recorded_with: VCR 2.9.3

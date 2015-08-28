@@ -2,7 +2,7 @@ module DummyMovesMapper
   class ActivityMapper < ROM::Mapper
     # reject_keys true
 
-    attribute "activity"
+    attribute "name", from: "activity"
     attribute "group"
     attribute "started_at", from: "startTime"
     attribute "finished_at", from: "endTime"
@@ -10,11 +10,9 @@ module DummyMovesMapper
     attribute "distance"
     attribute "steps"
     attribute "calories"
-    attribute "updated_at"
     attribute "manual"
-    attribute "trackPoints"
 
-    # embedded "track_points", from: "trackPoints", mapper: TrackPointMapper
+    embedded "track_points", from: "trackPoints", mapper: TrackPointMapper, type: :array
 
     model Activity
   end

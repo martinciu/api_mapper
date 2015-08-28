@@ -8,5 +8,6 @@ module DummyMovesMapper
     attribute :distance, Integer
     attribute :steps, Integer
     attribute :calories, Integer
+    attribute :updated_at, Time
   end
 end
