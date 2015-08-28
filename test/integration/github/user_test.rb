@@ -48,8 +48,7 @@ class GithubUserTest < Minitest::Test
   end
 
   def test_poro_mapper
-    client = ApiMapper::Client.new("https://api.github.com")
-    client.router = Router.new
+    client = ApiMapper::Client.new("https://api.github.com", Router.new)
     client.authorization("token secret_token")
 
     VCR.use_cassette("github/user_get") do

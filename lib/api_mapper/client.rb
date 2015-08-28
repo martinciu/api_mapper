@@ -11,15 +11,13 @@ module ApiMapper
   #
   # @attr_writer (ApiMapper::Router) router router used for processing requests
   class Client
-    attr_writer :router
-
     # A new instance of ApiMapper::Client
     #
     # @param (String) base_url base URL of all API endpoints
     # @return (ApiMapper::Client)
-    def initialize(base_url)
+    def initialize(base_url, router = Router.new)
       @base_url = base_url
-      @router = Router.new
+      @router = router
     end
 
     # Make HTTP GET request
@@ -34,7 +32,7 @@ module ApiMapper
       response = response(:get, path)
       mapper = mapper(:get, path)
 
-      map_response(mapper, response)
+      ResponseMapper.new(mapper).call(response)
     end
 
     # Make HTTP PATCH request
@@ -50,7 +48,7 @@ module ApiMapper
       mapper = mapper(:patch, path)
       response = response(:patch, path, payload)
 
-      map_response(mapper, response)
+      ResponseMapper.new(mapper).call(response)
     end
 
     # Make HTTP POST request
@@ -66,7 +64,7 @@ module ApiMapper
       mapper = mapper(:post, path)
       response = response(:post, path, payload)
 
-      map_response(mapper, response)
+      ResponseMapper.new(mapper).call(response)
     end
 
     # Authorize client using `Authorization` HTTP header
@@ -82,15 +80,6 @@ module ApiMapper
 
     private
 
-    def map_response(mapper, response)
-      body = response.body
-      if body.is_a? Hash
-        mapper.call([body])[0]
-      else
-        mapper.call(body)
-      end
-    end
-
     def mapper(method, path)
       @router.resolve(method, path).mapper
     end
@@ -102,10 +91,33 @@ module ApiMapper
     def connection
       @connection ||= Faraday.new(url: @base_url) do |conn|
         conn.adapter :net_http
-        conn.headers["Content-Type"] = "application/json"
-        conn.headers["Accept"] = "application/json"
-        conn.headers["Authorization"] = @authorization if @authorization
-        conn.headers["X-Client"] = "ApiMapper-v#{ApiMapper::VERSION}"
+        conn.headers = headers
+      end
+    end
+
+    def headers
+      {
+        "Content-Type"  => "application/json",
+        "Accept"        => "application/json",
+        "Authorization" => @authorization,
+        "X-Client"      => "ApiMapper-v#{ApiMapper::VERSION}"
+      }.select { |_, value| value }
+    end
+
+    # Maps response using given mapper
+    # @api private
+    class ResponseMapper
+      def initialize(mapper)
+        @mapper = mapper
+      end
+
+      def call(response)
+        body = response.body
+        if body.is_a? Hash
+          @mapper.call([body])[0]
+        else
+          @mapper.call(body)
+        end
       end
     end
   end
@@ -159,7 +171,7 @@ module ApiMapper
     end
 
     def attributes
-      @model.attributes.select { |_, value| !value.nil? }
+      @model.attributes
     end
   end
 end

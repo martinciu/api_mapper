@@ -8,6 +8,7 @@ module ApiMapper
   #     patch 'user', UserMapper.new
   #     get 'user/{id}/messages', MessageMapper.new
   #   end
+  # :reek:DataClump
   class Router
     class << self
       ##
@@ -104,13 +105,14 @@ module ApiMapper
     end
 
     ##
-    # Check if fiven method and path matches a route
+    # Check if given method and path matches a route
     #
     # @param (Symbol) method HTTP method one of :get, :patch, :post
     # @param (String) path request path
     # @return (Boolean)
     #
     # @api private
+    # I wouldn't call `method` a :reek:ControlParameter
     def match(method, path)
       @method == method && @path.match(path)
     end
