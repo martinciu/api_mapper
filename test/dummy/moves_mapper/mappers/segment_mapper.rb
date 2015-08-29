@@ -7,9 +7,7 @@ module DummyMovesMapper
     attribute "finished_at", from: "endTime"
     attribute "updated_at", from: "lastUpdate"
 
-    attribute "place", default: {}
-
-    # embedded "place", mapper: PlaceMapper, type: :array
+    embedded "place", mapper: PlaceMapper, type: :hash
     embedded "activities", mapper: ActivityMapper
 
     model Segment

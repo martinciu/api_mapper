@@ -1,13 +1,13 @@
 module DummyMovesMapper
   class PlaceMapper < ROM::Mapper
-    reject_keys true
+    # reject_keys true
 
     attribute "id"
     attribute "name"
     attribute "type"
-    attribute "foursquare_id", from: "foursquareId"
+    # attribute "foursquare_id", from: "foursquareId"
 
-    embedded "location", mapper: LocationMapper, type: :hash
+    # embedded "location", mapper: LocationMapper, type: :hash
 
     model Place
   end

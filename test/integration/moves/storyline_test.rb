@@ -11,7 +11,7 @@ class MovesStorylineTest < Minitest::Test
     client.authorization(nil)
   end
 
-  def test_summary_by_date
+  def test_storyline_by_date
     VCR.use_cassette("moves/storyline_day") do
       days = repository.find_by_date(Date.parse("2015-08-18"))
 
