@@ -30,7 +30,8 @@ module ApiMapper
     # @return [Array, Object] mapped API response
     def get(path)
       response = response(:get, path)
-      mapper = mapper(:get, path)
+      route = Route.new(:get, path)
+      mapper = mapper(route)
 
       ResponseMapper.new(mapper).call(response)
     end
@@ -45,8 +46,9 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def patch(path, payload)
-      mapper = mapper(:patch, path)
       response = response(:patch, path, payload)
+      route = Route.new(:patch, path)
+      mapper = mapper(route)
 
       ResponseMapper.new(mapper).call(response)
     end
@@ -61,7 +63,8 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def post(path, payload)
-      mapper = mapper(:post, path)
+      route = Route.new(:post, path)
+      mapper = mapper(route)
       response = response(:post, path, payload)
 
       ResponseMapper.new(mapper).call(response)
@@ -80,8 +83,8 @@ module ApiMapper
 
     private
 
-    def mapper(method, path)
-      @router.resolve(method, path).mapper
+    def mapper(route)
+      @router.resolve(route).mapper
     end
 
     def response(method, path, body = nil)
@@ -119,6 +122,17 @@ module ApiMapper
           @mapper.call(body)
         end
       end
+    end
+  end
+
+  # Route
+  # @api private
+  class Route
+    attr_reader :http_method, :path
+
+    def initialize(http_method, path)
+      @http_method = http_method
+      @path = path
     end
   end
 

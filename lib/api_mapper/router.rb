@@ -50,7 +50,7 @@ module ApiMapper
       ##
       # List of defined routes
       #
-      # @return (Array[Route]) defined routes
+      # @return (Array[RouteMatcher]) defined routes
       #
       # @api private
       def routes
@@ -60,7 +60,7 @@ module ApiMapper
       private
 
       def add_route(method, mapper, path)
-        routes << Route.new(method, mapper, path)
+        routes << RouteMatcher.new(method, mapper, path)
       end
     end
 
@@ -76,8 +76,8 @@ module ApiMapper
     #   router.resolve(:get, '/users/123')
     #
     # @api private
-    def resolve(method, path)
-      self.class.routes.find { |route| route.match(method, path) }
+    def resolve(route)
+      self.class.routes.find { |matcher| matcher.match(route) }
     end
   end
 
@@ -87,7 +87,7 @@ module ApiMapper
   # @attr_reader (Object) mapper mapper for the route
   #
   # @api private
-  class Route
+  class RouteMatcher
     attr_reader :mapper
 
     ##
@@ -99,7 +99,7 @@ module ApiMapper
     #
     # @api private
     def initialize(method, path, mapper)
-      @method = method
+      @http_method = method
       @path = Addressable::Template.new(path)
       @mapper = mapper
     end
@@ -112,9 +112,8 @@ module ApiMapper
     # @return (Boolean)
     #
     # @api private
-    # I wouldn't call `method` a :reek:ControlParameter
-    def match(method, path)
-      @method == method && @path.match(path)
+    def match(route)
+      @http_method == route.http_method && @path.match(route.path)
     end
   end
 end
