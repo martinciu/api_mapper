@@ -86,7 +86,7 @@ module ApiMapper
 
     private
 
-    def mapper(route, _ )
+    def mapper(route, _)
       @router.resolve(route).mapper
     end
 
