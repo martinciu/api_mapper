@@ -29,12 +29,7 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def get(path, payload = nil)
-      route = Route.new(:get, path)
-
-      response = response(route, payload)
-      mapper = mapper(route, response)
-
-      ResponseMapper.new(mapper).call(response)
+      result(payload, Route.new(:get, path))
     end
 
     # Make HTTP PATCH request
@@ -47,12 +42,7 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def patch(path, payload = nil)
-      route = Route.new(:patch, path)
-
-      response = response(route, payload)
-      mapper = mapper(route, response)
-
-      ResponseMapper.new(mapper).call(response)
+      result(payload, Route.new(:patch, path))
     end
 
     # Make HTTP POST request
@@ -65,12 +55,7 @@ module ApiMapper
     #
     # @return [Array, Object] mapped API response
     def post(path, payload = nil)
-      route = Route.new(:post, path)
-
-      response = response(route, payload)
-      mapper = mapper(route, response)
-
-      ResponseMapper.new(mapper).call(response)
+      result(payload, Route.new(:post, path))
     end
 
     # Authorize client using `Authorization` HTTP header
@@ -99,6 +84,13 @@ module ApiMapper
         conn.adapter :net_http
         conn.headers = headers
       end
+    end
+
+    def result(payload, route)
+      response = response(route, payload)
+      mapper = mapper(route, response)
+
+      ResponseMapper.new(mapper).call(response)
     end
 
     def headers
