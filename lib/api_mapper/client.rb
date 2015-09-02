@@ -28,10 +28,10 @@ module ApiMapper
     # @param (String) path request path
     #
     # @return [Array, Object] mapped API response
-    def get(path)
+    def get(path, payload = nil)
       route = Route.new(:get, path)
-      response = response(route)
 
+      response = response(route, payload)
       mapper = mapper(route, response)
 
       ResponseMapper.new(mapper).call(response)
@@ -46,10 +46,10 @@ module ApiMapper
     # @param (Object) payload request payload
     #
     # @return [Array, Object] mapped API response
-    def patch(path, payload)
+    def patch(path, payload = nil)
       route = Route.new(:patch, path)
-      response = response(route, payload)
 
+      response = response(route, payload)
       mapper = mapper(route, response)
 
       ResponseMapper.new(mapper).call(response)
@@ -64,10 +64,10 @@ module ApiMapper
     # @param (Object) payload request payload
     #
     # @return [Array, Object] mapped API response
-    def post(path, payload)
+    def post(path, payload = nil)
       route = Route.new(:post, path)
-      response = response(route, payload)
 
+      response = response(route, payload)
       mapper = mapper(route, response)
 
       ResponseMapper.new(mapper).call(response)
