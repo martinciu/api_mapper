@@ -15,6 +15,6 @@ require "dummy/github_mapper/mappers/issue_mapper"
 
 require "dummy/github_mapper/router"
 
-module DummyGithibMapper
+module DummyGithubMapper
   # Your code goes here...
 end
