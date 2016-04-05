@@ -3,6 +3,7 @@ module DummyGithubMapper
     get "emojis", EmojiMapper.new
     get "repositories", RepositoryMapper.build
     post "user/repos", RepositoryMapper.build
+    get "repos/{owner}/{repo}", RepositoryMapper.build
     get "repos/{owner}/{repo}/issues", IssueMapper.build
     get "user", UserMapper.build
     patch "user", UserMapper.build

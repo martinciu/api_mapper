@@ -29,6 +29,21 @@ class GithubRepositoriesTest < Minitest::Test
     end
   end
 
+  def test_repository
+    VCR.use_cassette("github/repository") do
+      repository = client.get("repos/mojombo/grit")
+
+      assert_equal 1, repository.id
+      assert_equal "grit", repository.name
+      assert_equal "mojombo/grit", repository.full_name
+
+      user = repository.owner
+
+      assert_equal 1, user.id
+      assert_equal "mojombo", user.login
+    end
+  end
+
   def test_create
     VCR.use_cassette("github/repository_create") do
       new_repository = DummyGithubMapper::Repository.new(name: "dummy")
