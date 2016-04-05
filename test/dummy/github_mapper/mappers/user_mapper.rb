@@ -1,4 +1,4 @@
-module GithubMapper
+module DummyGithubMapper
   class UserMapper < ROM::Mapper
     reject_keys true
 

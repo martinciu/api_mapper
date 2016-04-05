@@ -1,4 +1,4 @@
-module GithubMapper
+module DummyGithubMapper
   class Router < ApiMapper::Router
     get "emojis", EmojiMapper.new
     get "repositories", RepositoryMapper.build

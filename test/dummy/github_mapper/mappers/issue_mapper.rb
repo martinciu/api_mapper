@@ -1,4 +1,4 @@
-module GithubMapper
+module DummyGithubMapper
   class IssueMapper < ROM::Mapper
     attribute "id"
     attribute "number"

@@ -1,4 +1,4 @@
-module GithubMapper
+module DummyGithubMapper
   class RepositoryMapper < ROM::Mapper
     attribute "id"
     attribute "name"

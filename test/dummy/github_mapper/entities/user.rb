@@ -1,4 +1,4 @@
-module GithubMapper
+module DummyGithubMapper
   class User
     include Virtus.model
 

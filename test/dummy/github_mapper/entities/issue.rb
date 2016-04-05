@@ -1,4 +1,4 @@
-module GithubMapper
+module DummyGithubMapper
   class Issue
     include ROM::Model::Attributes
 
